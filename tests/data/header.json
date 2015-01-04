@@ -1,0 +1,12 @@
+{
+  "x-real-ip": "192.30.252.36",
+  "host": "node.barcelonajs.org",
+  "connection": "close",
+  "content-length": "7819",
+  "accept": "*/*",
+  "user-agent": "GitHub-Hookshot/0687198",
+  "x-github-event": "issues",
+  "x-github-delivery": "1d47d080-6739-11e4-86a5-ee4c32b3bf49",
+  "content-type": "application/json",
+  "x-hub-signature": "sha1=0860913dc2028e49066178f87f5f6b0782d2405e"
+}
