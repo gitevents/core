@@ -1,7 +1,7 @@
 var config;
 
-if (process.env.NODE_ENV === 'production') {
-  config = require('./production');
+if (process.env.NODE_ENV === 'testing') {
+  config = require('./testing');
 } else {
   config = require('./development');
 }

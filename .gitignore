@@ -27,5 +27,4 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
-common/production.js
-common/development.js
+common/testing.js
