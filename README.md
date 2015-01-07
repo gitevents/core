@@ -7,7 +7,7 @@ A node.js micro service that listens to GitHub web hooks, compiles gh-pages and 
 
 This reposiroty will be subject of a hack day on January 17. Participants:
 
-- NodeBCN / BarcelonaJS
+- NodeBCN / BarcelonaJS (http://www.meetup.com/NodeBCN/events/219664616/)
 - LNUG (London Node User Group)
 
 If you'd like to participate, get in touch with @PatrickHeneise and @iancrowther.
