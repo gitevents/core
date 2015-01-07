@@ -3,6 +3,16 @@ gitup
 
 A node.js micro service that listens to GitHub web hooks, compiles gh-pages and manages meetup.com
 
+## Hack Day
+
+This reposiroty will be subject of a hack day on January 17. Participants:
+
+- NodeBCN / BarcelonaJS
+- LNUG (London Node User Group)
+
+If you'd like to participate, get in touch with @PatrickHeneise and @iancrowther.
+
+
 ## Technical (Bot) Workflow
 
 1. Listen to GitHub Webhooks for Issues. If there's an issue labeled with the milestone for the next event:
