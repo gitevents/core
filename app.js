@@ -1,12 +1,10 @@
 var
   express = require('express'),
   debug = require('debug')('gitup'),
+  config = require('./common/config'),
   path = require('path'),
-  favicon = require('serve-favicon'),
   logger = require('morgan'),
-  cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
-  routes = require('./routes/index'),
   app = express();
 
 app.set('port', process.env.PORT || 3000);
@@ -15,8 +13,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-
-app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
