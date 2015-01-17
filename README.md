@@ -3,8 +3,12 @@ gitup
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/barcelona-js/gitup?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-A node.js micro service that listens to GitHub web hooks, compiles gh-pages and manages meetup.com
+A node.js micro service that listens to GitHub web hooks to:
+1. verify event and speaker issues (bot)
+2. send emails in the run up to the event
+3. update meetup.com
 
+This service will **not** generate a website for you, but an example is coming soon...
 ## Hack Day
 
 This reposiroty will be subject of a hack day on January 17. Participants:
@@ -35,4 +39,4 @@ If you'd like to participate, get in touch with @PatrickHeneise and @iancrowther
 5. Once the issue has a label and a milestone, it can be processed for JSON storage. GitUp needs your GitHub credentials (API key) to create a file in your repo with the talk and event information.
 6. External services are triggered (meetup.com etc.) and populated from the JSON
 
-You'll never have to edit mutliple platforms ever again. You can make an AJAX request from your event website to the main JSON file, and meetup and other services will be automatically managed by GitUp bot.
+You'll never have to edit mutliple platforms ever again. You can make an AJAX request from your event website to the issues/milestones to get information about events.
