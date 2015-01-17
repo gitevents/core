@@ -14,12 +14,20 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+
+
+app.post('/hook',function(req, resp) {
+  console.log('HOOKED', req);
 });
+
+
+
+app.get('/hook',function(req, resp) {
+  console.log('HOOKED GET', req);
+});
+
+
+
 
 // development error handler
 // will print stacktrace
@@ -43,6 +51,10 @@ app.use(function (err, req, res, next) {
   });
 });
 
+
+
+
+
+
 app.listen(app.get('port'), function () {
-  debug('GitUp listening on port ' + server.address().port);
 });
