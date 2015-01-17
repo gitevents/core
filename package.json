@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node ./bin/www"
   },
+  "license": "MIT",
   "dependencies": {
     "debug": "~2.0.0"
   }
