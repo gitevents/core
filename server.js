@@ -1,11 +1,14 @@
 var
-  express = require('express'),
   debug = require('debug')('gitup'),
   config = require('./common/config'),
   path = require('path'),
   logger = require('morgan'),
   bodyParser = require('body-parser'),
   app = express();
+
+// integrations
+webhook = require('./integrations/gitup-webhook')(config);
+twitter = require('./integrations/gitup-twitter')(config);
 
 app.set('port', process.env.PORT || 3000);
 app.use(logger('dev'));
@@ -19,6 +22,37 @@ app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
+});
+
+/* delivery, example:
+{
+"action": "labeled",
+"issue": {
+"url": "https://api.github.com/repos/octocat/Hello-World/issues/1347",
+"number": 1347,
+...
+},
+"repository" : {
+"id": 1296269,
+"full_name": "octocat/Hello-World",
+"owner": {
+"login": "octocat",
+"id": 1,
+...
+},
+...
+},
+"sender": {
+"login": "octocat",
+"id": 1,
+...
+}
+}
+*/
+app.post('/github/delivery', function (req, res) {
+  webhook.process(req, function (error, data) {
+    
+  });
 });
 
 // development error handler
