@@ -1,4 +1,5 @@
 var crypto = require('crypto');
+var request = require('request');
 
 module.exports = function (config) {
   if (!config.github) {
@@ -25,6 +26,49 @@ module.exports = function (config) {
         throw new Error('No ' + validHeaders[i] + ' found on request');
       }
     }
+  }
+
+  /**
+   * Extract the label from the payload
+   */
+  var label = function(payload) {
+    return payload.label.name;
+  }
+
+  /**
+   * Extract the repository API URL from the payload
+   */
+  var repositoryAPIURL = function(payload) {
+    return payload.repository.url;
+  }
+
+  /**
+   * Load associated GitHub issues
+   *
+   * Load all associated GitHub issues by querying
+   * GitHub's API on the specific repo URL against
+   * the label found on the payload.
+   */
+  var loadIssues = function(payload, callback) {
+    // build the issues API query URL
+    var url = repositoryAPIURL(payload) +
+              '/issues?labels=' +
+              encodeURIComponent(label(payload));
+
+
+    var options = {
+      url: url,
+
+      // GitHub API requires a user agent
+      headers: {
+        'User-Agent': 'Gitup'
+      }
+    };
+
+    // make the actual HTTP request
+    request(options, function (error, response, body) {
+      callback(JSON.parse(body), error);
+    });
   }
 
   return {
@@ -56,8 +100,10 @@ module.exports = function (config) {
           // convert body to JSON
           req.body = JSON.parse(data);
 
-          // callback the caller passing the JSON body
-          callback(req.body, null);
+          // load all associated issues
+          loadIssues(req.body, function(body, err) {
+            callback(body, err);
+          })
         }
       });
     }
