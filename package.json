@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "gitup-webhook": "git://github.com/bpedro/gitup-webhook.git",
+    "gitup-webhook": "git://github.com/GitEvents/gitevents-webhook.git",
     "debug": "~2.0.0"
   },
   "devDependencies": {
