@@ -1,0 +1,21 @@
+{
+  "name": "gitup-webhook",
+  "version": "0.0.1",
+  "description": "Gitup Webhook module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bpedro/gitup-webhook.git"
+  },
+  "author": "Bruno Pedro <bpedro@brunopedro.com>",
+  "license": "MIT",
+  "dependencies": {
+    "crypto": "0.0.3"
+  },
+  "devDependencies": {
+    "tape": "^3.2.0"
+  }
+}
