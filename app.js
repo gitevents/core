@@ -44,5 +44,4 @@ app.use(function (err, req, res, next) {
 });
 
 app.listen(app.get('port'), function () {
-  debug('GitUp listening on port ' + server.address().port);
 });
