@@ -1,6 +1,6 @@
 {
   "name": "gitup-webhook",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Gitup Webhook module",
   "main": "index.js",
   "scripts": {
