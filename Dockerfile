@@ -15,3 +15,5 @@ RUN     npm install -g pm2; cd /src; npm install; npm update
 # CMD ["/usr/bin/pm2", "start", "/src/agent.js", "--no-daemon"]
 CMD ["export", "NODE_ENV=production"]
 CMD ["/usr/bin/node", "/server.js"]
+
+EXPOSE  3000
