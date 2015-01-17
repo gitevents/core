@@ -1,14 +1,9 @@
-var
+var express = require('express'),
   debug = require('debug')('gitup'),
   config = require('./common/config'),
-  path = require('path'),
   logger = require('morgan'),
   bodyParser = require('body-parser'),
   app = express();
-
-// integrations
-webhook = require('./integrations/gitup-webhook')(config);
-twitter = require('./integrations/gitup-twitter')(config);
 
 app.set('port', process.env.PORT || 3000);
 app.use(logger('dev'));
@@ -17,45 +12,19 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
+// integrations
+var webhook = require('./integrations/gitup-webhook')(app);
+//var twitter = require('./integrations/gitup-twitter')(config);
+
+webhook.on('issues', function(data) { //
+  console.log("issue event fired: ", data);
+});
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
-});
-
-/* delivery, example:
-{
-"action": "labeled",
-"issue": {
-"url": "https://api.github.com/repos/octocat/Hello-World/issues/1347",
-"number": 1347,
-...
-},
-"repository" : {
-"id": 1296269,
-"full_name": "octocat/Hello-World",
-"owner": {
-"login": "octocat",
-"id": 1,
-...
-},
-...
-},
-"sender": {
-"login": "octocat",
-"id": 1,
-...
-}
-}
-*/
-app.post('/github/delivery', function (req, res) {
-  // just for debugging webhooks ...
-  console.loq(req);
-
-  webhook.process(req, function (error, data) {
-
-  });
 });
 
 // development error handler
@@ -80,6 +49,8 @@ app.use(function (err, req, res, next) {
   });
 });
 
-app.listen(app.get('port'), function () {
+var server = app.listen(app.get('port'), function () {
   debug('GitUp listening on port ' + server.address().port);
 });
+
+module.exports = app;
