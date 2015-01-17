@@ -4,48 +4,55 @@ var
   http = require('http');
 
 // integrations
-webhook = require('./integrations/gitup-webhook')(config);
+webhook = require('gitup-webhook')(config);
 // twitter = require('./integrations/gitup-twitter')(config);
 
+var server = http.createServer(function (req, res) {
+  console.log(req.method + ' ' + req.url);
 
-
-/* delivery, example:
-{
-'action': 'labeled',
-'issue': {
-'url': 'https://api.github.com/repos/octocat/Hello-World/issues/1347',
-'number': 1347,
-...
-},
-'repository' : {
-'id': 1296269,
-'full_name': 'octocat/Hello-World',
-'owner': {
-'login': 'octocat',
-'id': 1,
-...
-},
-...
-},
-'sender': {
-'login': 'octocat',
-'id': 1,
-...
-}
-}
-*/
-
-var server = http.createServer(function (request, response) {
-  console.log('incoming');
-  console.log(request);
-
-  webhook.process(request, function (error, event) {
-    response.writeHeader(200, {
+  process.on('uncaughtException', function (error) {
+    res.writeHeader(500, {
       'Content-Type': 'text/plain'
     });
-    response.write('OK');
-    response.end();
+    res.write(error.toString());
+    res.end();
   });
+
+
+  if (req.url === '/github/delivery' && req.method === 'POST') {
+    var body = '';
+
+    req.on('data', function (chunk) {
+      body += chunk.toString();
+    });
+
+    req.on('end', function () {
+      req.body = body;
+
+      // testing github webhooks.
+      console.log(body);
+
+      webhook.process(req, function (error, event) {
+        if (error) {
+          res.writeHeader(500, {
+            'Content-Type': 'text/plain'
+          });
+          res.write(error);
+        } else {
+          res.writeHeader(500, {
+            'Content-Type': 'application/json'
+          });
+          res.write(event);
+        }
+        res.end();
+      });
+    });
+  } else {
+    res.writeHeader(204, {
+      'Content-Type': 'text/plain'
+    });
+    res.end();
+  }
 });
 
 server.listen(3000);
