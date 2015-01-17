@@ -48,20 +48,13 @@ module.exports = function (config) {
       // when the request ends, compare signature and hash
       req.on('end', function() {
         var hash = 'sha1=' + req.hasher.digest('hex');
-        if (hash != received_sig) {
+        if (hash != signature) {
           callback(null, 403);
         } else {
           // this is a valid webhook from GitHub
 
           // convert body to JSON
           req.body = JSON.parse(data);
-
-          // TODO: contact GitHub
-          // TODO
-          // Get all issues with the same label as the one
-          // from the webhook and return the whole object
-          //
-          // Also get associated milestones and parse them
 
           // callback the caller passing the JSON body
           callback(req.body, null);
