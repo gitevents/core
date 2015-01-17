@@ -1,8 +1,6 @@
-var
-  express = require('express'),
+var express = require('express'),
   debug = require('debug')('gitup'),
   config = require('./common/config'),
-  path = require('path'),
   logger = require('morgan'),
   bodyParser = require('body-parser'),
   app = express();
@@ -13,6 +11,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+
+app.use(require('./routes'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
