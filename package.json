@@ -1,14 +1,14 @@
 {
-  "name": "gitup-webhook",
-  "version": "0.0.5",
-  "description": "Gitup Webhook module",
+  "name": "gitevents-webhook",
+  "version": "0.0.6",
+  "description": "GitEvents Webhook module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:bpedro/gitup-webhook.git"
+    "url": "git@github.com:bpedro/gitevents-webhook.git"
   },
   "author": "Bruno Pedro <bpedro@brunopedro.com>",
   "license": "MIT",
