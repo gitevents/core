@@ -6,7 +6,9 @@ gitup-webhook is an npm module that can be used to process and validate GitHub o
 
 ```
 ...
-var webhook = require('webhook');
+
+var config = {github: {key: 'MY_WEBHOOK_KEY'}};
+var webhook = require('webhook')(config);
 
 app.post('/hook', function(req, res) {
   webhook.process(req, function(body, err) {
