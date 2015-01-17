@@ -3,9 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "test": "mocha",
     "start": "node ./bin/www"
   },
   "dependencies": {
     "debug": "~2.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.1.0"
   }
 }
