@@ -67,8 +67,19 @@ module.exports = function (config) {
 
     // make the actual HTTP request
     request(options, function (error, response, body) {
-      callback(JSON.parse(body), error);
+      callback(events(JSON.parse(body)), error);
     });
+  }
+
+  /**
+   * Generate a valid events object
+   */
+  var events = function(issues) {
+    // TODO: iterate through all the issues
+    // and generate events JSON.
+    //
+    // For now return all the issues
+    return issues;
   }
 
   return {

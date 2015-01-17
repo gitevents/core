@@ -1,6 +1,6 @@
 {
   "name": "gitevents-webhook",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "GitEvents Webhook module",
   "main": "index.js",
   "scripts": {
