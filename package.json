@@ -1,6 +1,6 @@
 {
   "name": "gitup-webhook",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Gitup Webhook module",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,8 @@
   "author": "Bruno Pedro <bpedro@brunopedro.com>",
   "license": "MIT",
   "dependencies": {
-    "crypto": "0.0.3"
+    "crypto": "0.0.3",
+    "request": "^2.51.0"
   },
   "devDependencies": {
     "tape": "^3.2.0"
