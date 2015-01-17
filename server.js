@@ -29,6 +29,9 @@ var server = http.createServer(function (req, res) {
     req.on('end', function () {
       req.body = body;
 
+      // testing github webhooks.
+      console.log(body);
+
       webhook.process(req, function (error, event) {
         if (error) {
           res.writeHeader(500, {
