@@ -1,6 +1,9 @@
 gitup
 =====
 
+[![codeship](https://codeship.com/projects/2916bbb0-8087-0132-9038-321707412590/status?branch=master)](https://codeship.com/projects/57495)
+
+
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/barcelona-js/gitup?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 A node.js micro service that listens to GitHub web hooks to:
