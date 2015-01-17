@@ -1,7 +1,7 @@
 var
-debug = require('debug')('gitup'),
-config = require('./common/config'),
-http = require('http');
+  debug = require('debug')('gitup'),
+  config = require('./common/config'),
+  http = require('http');
 
 // integrations
 webhook = require('./integrations/gitup-webhook')(config);
