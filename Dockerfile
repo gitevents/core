@@ -12,8 +12,8 @@ ADD     . /src
 # Install app dependencies
 RUN     npm install -g pm2; cd /src; npm install; npm update
 
-# CMD ["/usr/bin/pm2", "start", "/src/agent.js", "--no-daemon"]
+# CMD ["/usr/bin/pm2", "start", "/src/server.js", "--no-daemon"]
 CMD ["export", "NODE_ENV=production"]
-CMD ["/usr/bin/node", "/server.js"]
+CMD ["/usr/bin/node", "/src/server.js"]
 
 EXPOSE  3000
