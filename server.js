@@ -50,8 +50,11 @@ app.use(function (req, res, next) {
 }
 */
 app.post('/github/delivery', function (req, res) {
+  // just for debugging webhooks ...
+  console.loq(req);
+
   webhook.process(req, function (error, data) {
-    
+
   });
 });
 
