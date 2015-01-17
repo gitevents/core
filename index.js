@@ -61,7 +61,7 @@ module.exports = function (config) {
 
       // GitHub API requires a user agent
       headers: {
-        'User-Agent': 'Gitup'
+        'User-Agent': 'GitEvents'
       }
     };
 
