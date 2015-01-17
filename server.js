@@ -1,7 +1,7 @@
 var
-  debug = require('debug')('gitup'),
-  config = require('./common/config'),
-  http = require('http');
+debug = require('debug')('gitup'),
+config = require('./common/config'),
+http = require('http');
 
 // integrations
 webhook = require('./integrations/gitup-webhook')(config);
@@ -35,16 +35,19 @@ webhook = require('./integrations/gitup-webhook')(config);
 }
 */
 
-http.createServer(function (request, response) {
-    console.log('incoming');
-    console.log(request);
+var server = http.createServer(function (request, response) {
+  console.log('incoming');
+  console.log(request);
 
+  webhook.process(request, function (error, event) {
     response.writeHeader(200, {
       'Content-Type': 'text/plain'
     });
-    response.write('Hello World');
+    response.write('OK');
     response.end();
-  })
-  .listen(3000);
+  });
+});
+
+server.listen(3000);
 
 console.log('GitUp listening on 3000');
