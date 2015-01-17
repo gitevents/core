@@ -4,6 +4,7 @@ gitup
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/barcelona-js/gitup?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 A node.js micro service that listens to GitHub web hooks to:
+
 1. verify event and speaker issues (bot)
 2. send emails in the run up to the event
 3. update meetup.com
