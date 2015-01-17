@@ -4,7 +4,7 @@ var
   http = require('http');
 
 // integrations
-webhook = require('./integrations/gitup-webhook')(config);
+webhook = require('gitup-webhook')(config);
 // twitter = require('./integrations/gitup-twitter')(config);
 
 

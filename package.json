@@ -1,12 +1,13 @@
 {
   "name": "gitup",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "node ./bin/www"
   },
   "license": "MIT",
   "dependencies": {
+    "gitup-webhook": "git://github.com/bpedro/gitup-webhook.git",
     "debug": "~2.0.0"
   }
 }
