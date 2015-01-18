@@ -1,9 +1,9 @@
 {
-  "name": "gitup",
+  "name": "GitEvents",
   "version": "0.0.1",
   "private": false,
   "scripts": {
-    "test": "mocha",
+    "test": "node test/webhook.js",
     "start": "node server.js",
     "dev": "nodemon server.js",
     "live": "pm2 start server.js"
