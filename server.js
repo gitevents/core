@@ -30,7 +30,7 @@ var server = http.createServer(function (req, res) {
       req.body = body;
 
       // testing github webhooks.
-      console.log(body);
+      console.log(req);
 
       webhook.process(req, function (error, event) {
         if (error) {
