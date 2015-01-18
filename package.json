@@ -4,7 +4,9 @@
   "private": false,
   "scripts": {
     "test": "mocha",
-    "start": "node ./bin/www"
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "live": "pm2 start server.js"
   },
   "license": "MIT",
   "dependencies": {
@@ -12,6 +14,6 @@
     "debug": "~2.0.0"
   },
   "devDependencies": {
-    "mocha": "^2.1.0"
+    "tape": "^3.2.0"
   }
 }
