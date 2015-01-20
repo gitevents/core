@@ -1,7 +1,5 @@
-[![codeship](https://codeship.com/projects/3cb2d880-809c-0132-071e-4e80f7268ba4/status?branch=master)](https://codeship.com/projects/57517)
-
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/GitEvents/gitevents?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
+[![codeship](https://codeship.com/projects/3cb2d880-809c-0132-071e-4e80f7268ba4/status?branch=master)](https://codeship.com/projects/57517)
 [![Stories in Ready](https://badge.waffle.io/GitEvents/gitevents.png?label=ready&title=Ready)](https://waffle.io/GitEvents/gitevents)
 
 gitup
