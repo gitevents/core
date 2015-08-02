@@ -26,21 +26,21 @@ module.exports = function (config) {
         throw new Error('No ' + validHeaders[i] + ' found on request');
       }
     }
-  }
+  };
 
   /**
    * Extract the label from the payload
    */
   var label = function(payload) {
     return payload.label.name;
-  }
+  };
 
   /**
    * Extract the repository API URL from the payload
    */
   var repositoryAPIURL = function(payload) {
     return payload.repository.url;
-  }
+  };
 
   /**
    * Load associated GitHub issues
@@ -69,7 +69,7 @@ module.exports = function (config) {
     request(options, function (error, response, body) {
       callback(events(JSON.parse(body)), error);
     });
-  }
+  };
 
   /**
    * Generate a valid events object
@@ -80,7 +80,7 @@ module.exports = function (config) {
     //
     // For now return all the issues
     return issues;
-  }
+  };
 
   return {
     process: function(req, callback) {
@@ -103,7 +103,7 @@ module.exports = function (config) {
       // when the request ends, compare signature and hash
       req.on('end', function() {
         var hash = 'sha1=' + req.hasher.digest('hex');
-        if (hash != signature) {
+        if (hash !== signature) {
           callback(null, 403);
         } else {
           // this is a valid webhook from GitHub
@@ -114,7 +114,7 @@ module.exports = function (config) {
           // load all associated issues
           loadIssues(req.body, function(body, err) {
             callback(body, err);
-          })
+          });
         }
       });
     }
