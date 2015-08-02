@@ -10,10 +10,11 @@ RUN     yum --enablerepo=centosplus install nodejs npm git -y
 ADD     . /src
 
 # Install app dependencies
-RUN     npm install -g pm2; cd /src; npm install; npm update
+RUN     cd /src; npm install; npm update
 
-# CMD ["/usr/bin/pm2", "start", "/src/server.js", "--no-daemon"]
-CMD ["export", "NODE_ENV=production"]
+ENV NODE_ENV production
+ENV DEBUG *
+
 CMD ["/usr/bin/node", "/src/server.js"]
 
 EXPOSE  3000
