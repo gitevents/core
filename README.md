@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 gitup
 =====
 
@@ -12,3 +13,29 @@ A node.js micro service that listens to GitHub web hooks to:
 3. update meetup.com
 
 This service will **not** generate a website for you, but an example is coming soon...
+=======
+# Introduction
+
+gitevents-webhook is an npm module that can be used to process and validate GitHub originated webhooks.
+
+# Basic usage
+
+```
+...
+
+var config = {github: {key: 'MY_WEBHOOK_KEY'}};
+var webhook = require('webhook')(config);
+
+app.post('/hook', function(req, res) {
+  webhook.process(req, function(body, err) {
+    if (err) {
+      res.status(err).json({msg: 'Unauthorized'}).end();
+    } else {
+      res.send(body);
+    }
+  });
+});
+
+...
+```
+>>>>>>> upstream/master

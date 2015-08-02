@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "GitEvents",
   "version": "0.0.1",
   "private": false,
@@ -12,6 +13,24 @@
   "dependencies": {
     "gitevents-webhook": "git://github.com/GitEvents/gitevents-webhook.git",
     "debug": "~2.0.0"
+=======
+  "name": "gitevents-webhook",
+  "version": "0.0.7",
+  "description": "GitEvents Webhook module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bpedro/gitevents-webhook.git"
+  },
+  "author": "Bruno Pedro <bpedro@brunopedro.com>",
+  "license": "MIT",
+  "dependencies": {
+    "crypto": "0.0.3",
+    "request": "^2.51.0"
+>>>>>>> upstream/master
   },
   "devDependencies": {
     "tape": "^3.2.0"
