@@ -5,8 +5,7 @@
   "scripts": {
     "test": "node test/webhook.js",
     "start": "node server.js",
-    "dev": "nodemon server.js",
-    "live": "pm2 start server.js"
+    "dev": "DEBUG=* nodemon server.js"
   },
   "license": "MIT",
   "dependencies": {
