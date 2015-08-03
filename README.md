@@ -18,11 +18,13 @@ This service will **not** generate a website for you, but an example is coming s
 
 1. Go to https://github.com/settings/tokens and create a token for your GitEvents application
 2. Create `common/github.config.js` with the contents:
+```
     module.exports = {
-      user: 'barcelona-js',
-      repo: 'BarcelonaJS',
-      token: 'your_token'
+      user: '[repo username]',
+      repo: '[the repo you want to write to]',
+      token: '[your token]'
     }
+```
 3. Build the docker container
 
 ## To Do
