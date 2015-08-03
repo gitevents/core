@@ -12,3 +12,19 @@ A node.js micro service that listens to GitHub web hooks to:
 3. update meetup.com
 
 This service will **not** generate a website for you, but an example is coming soon...
+
+
+## Setup
+
+1. Go to https://github.com/settings/tokens and create a token for your GitEvents application
+2. Create `common/github.config.js` with the contents:
+    module.exports = {
+      user: 'barcelona-js',
+      repo: 'BarcelonaJS',
+      token: 'your_token'
+    }
+3. Build the docker container
+
+## To Do
+
+1. Get tokens and secrets from a private Gist instead of re-building the container for full flexibility

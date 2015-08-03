@@ -1,4 +1,6 @@
-github = require('./github.config');
+'use strict';
+
+var github = require('./github.config');
 
 module.exports = {
 	debug: true,
