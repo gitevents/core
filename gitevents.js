@@ -12,13 +12,14 @@ var server = http.createServer(function(req, res) {
   console.log(req.method + ' ' + req.url);
 
   process.on('uncaughtException', function(error) {
+    //debug('uncaughtException', error);
+    //console.log(error);
     res.writeHeader(500, {
       'Content-Type': 'text/plain'
     });
     res.write(error.toString());
     res.end();
   });
-
 
   if (req.url === '/github/delivery' && req.method === 'POST') {
     var body = '';
@@ -54,6 +55,7 @@ var server = http.createServer(function(req, res) {
             'Content-Type': 'text/plain'
           });
           res.write(error);
+          res.end();
         }
 
         // webhook setup procedure
@@ -64,26 +66,22 @@ var server = http.createServer(function(req, res) {
           res.write('Hello GitHub.')
           res.end();
         } else {
-          debug('Processing from: ', data.sender.login);
+          // process data
+          debug('Processing from: ' + data.sender.login);
           webhook.process(data, function(error, event) {
             if (error) {
+              debug('webhook error: ', error);
               res.writeHeader(500, {
                 'Content-Type': 'text/plain'
               });
               res.write(error);
+              res.end();
             } else {
-              if (!event) {
-                res.writeHeader(204, {
-                  'Content-Type': 'application/json'
-                });
-              } else {
-                res.writeHeader(200, {
-                  'Content-Type': 'application/json'
-                });
-                res.write(event);
-              }
+              res.writeHeader(204, {
+                'Content-Type': 'application/json'
+              });
+              res.end();
             }
-            res.end();
           });
         }
       }

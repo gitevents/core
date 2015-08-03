@@ -1,14 +1,14 @@
 {
   "action": "labeled",
   "issue": {
-    "url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/3",
-    "labels_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/3/labels{/name}",
-    "comments_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/3/comments",
-    "events_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/3/events",
-    "html_url": "https://github.com/PatrickHeneise/gitup-testing/issues/3",
-    "id": 54695469,
-    "number": 3,
-    "title": "Your Awesome Talk",
+    "url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/5",
+    "labels_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/5/labels{/name}",
+    "comments_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/5/comments",
+    "events_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/5/events",
+    "html_url": "https://github.com/PatrickHeneise/gitup-testing/issues/5",
+    "id": 98608108,
+    "number": 5,
+    "title": "Hello JavaScript 4",
     "user": {
       "login": "PatrickHeneise",
       "id": 74390,
@@ -28,21 +28,24 @@
       "type": "User",
       "site_admin": false
     },
-    "labels": [{
-      "url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/labels/talk+proposal",
-      "name": "talk proposal",
-      "color": "0052cc"
-    }],
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/labels/talk%20proposal",
+        "name": "talk proposal",
+        "color": "0052cc"
+      }
+    ],
     "state": "open",
     "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/milestones/1",
+      "html_url": "https://github.com/PatrickHeneise/gitup-testing/milestones/Some%20NodeJS%20Event%20in%20the%20Future",
       "labels_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/milestones/1/labels",
       "id": 939881,
       "number": 1,
       "title": "Some NodeJS Event in the Future",
-      "description": "Where: Barcelona\\r\\nWhen: 6pm - 9pm\\r\\nAddress: Lollipop, Some Street, Somewhere in Sunny 123 Barcelona\\r\\nSome: more stuff\\r\\nAnd: even more info\\r\\nSo: whatever you want ...\\r\\n",
+      "description": "Where: Barcelona\r\nWhen: 6pm - 9pm\r\nAddress: Lollipop, Some Street, Somewhere in Sunny 123 Barcelona\r\nSome: more stuff\r\nAnd: even more info\r\nSo: whatever you want ...\r\n",
       "creator": {
         "login": "PatrickHeneise",
         "id": 74390,
@@ -62,22 +65,22 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 3,
+      "open_issues": 4,
       "closed_issues": 0,
       "state": "open",
       "created_at": "2015-01-17T16:15:43Z",
-      "updated_at": "2015-01-18T13:05:13Z",
-      "due_on": "2015-01-30T23:00:00Z",
+      "updated_at": "2015-08-03T16:21:29Z",
+      "due_on": "2034-12-30T23:00:00Z",
       "closed_at": null
     },
     "comments": 0,
-    "created_at": "2015-01-18T12:47:23Z",
-    "updated_at": "2015-01-18T13:05:19Z",
+    "created_at": "2015-08-02T13:03:22Z",
+    "updated_at": "2015-08-03T16:21:44Z",
     "closed_at": null,
-    "body": "---\\r\\nlevel: beginner | advanced | expert\\r\\nlanguage: en | es\\r\\ntwitter: YourTwitterHandle\\r\\nmonth: February\\r\\n\\r\\n---\\r\\n\\r\\nYour awesome talk description"
+    "body": "---\r\nlevel: advanced\r\nlanguage: es\r\ntwitter: YourTwitterHandle\r\nmonth: September\r\n\r\n---\r\n\r\nYour awesome talk description"
   },
   "label": {
-    "url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/labels/talk+proposal",
+    "url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/labels/talk%20proposal",
     "name": "talk proposal",
     "color": "0052cc"
   },
@@ -132,7 +135,7 @@
     "commits_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/commits{/sha}",
     "git_commits_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/git/commits{/sha}",
     "comments_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/comments{/number}",
-    "issue_comment_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/comments/{number}",
+    "issue_comment_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/comments{/number}",
     "contents_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/contents/{+path}",
     "compare_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/compare/{base}...{head}",
     "merges_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/merges",
@@ -152,7 +155,7 @@
     "clone_url": "https://github.com/PatrickHeneise/gitup-testing.git",
     "svn_url": "https://github.com/PatrickHeneise/gitup-testing",
     "homepage": null,
-    "size": 0,
+    "size": 116,
     "stargazers_count": 0,
     "watchers_count": 0,
     "language": null,
@@ -162,9 +165,9 @@
     "has_pages": false,
     "forks_count": 0,
     "mirror_url": null,
-    "open_issues_count": 3,
+    "open_issues_count": 5,
     "forks": 0,
-    "open_issues": 3,
+    "open_issues": 5,
     "watchers": 0,
     "default_branch": "master"
   },

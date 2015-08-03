@@ -1,14 +1,16 @@
+github = require('./github.config');
+
 module.exports = {
+	debug: true,
 	mail: {},
+	github: github,
 	meetup: {
 		apikey: ''
 	},
 	labels: {
 		job: 'jobs',
-		talk: 'talk proposal'
-	},
-	github: {
-		secret: 'Yiet1few0o7Shrac3oV4ghaT5vAit3ak4id5yiF5beaf6yat3B'
+		talk: 'talk',
+		proposal: 'talk proposal'
 	},
 	twitter:{
 		consumer_key: '',
