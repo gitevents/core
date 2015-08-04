@@ -1,0 +1,45 @@
+{
+  "content": {
+    "name": "proposals.json",
+    "path": "proposals.json",
+    "sha": "dddca3182ceac3acaddc18de4db105df9c71c270",
+    "size": 586,
+    "url": "https://api.github.com/repos/gitevents/Testing/contents/proposals.json?ref=master",
+    "html_url": "https://github.com/gitevents/Testing/blob/master/proposals.json",
+    "git_url": "https://api.github.com/repos/gitevents/Testing/git/blobs/dddca3182ceac3acaddc18de4db105df9c71c270",
+    "download_url": "https://raw.githubusercontent.com/gitevents/Testing/master/proposals.json",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/gitevents/Testing/contents/proposals.json?ref=master",
+      "git": "https://api.github.com/repos/gitevents/Testing/git/blobs/dddca3182ceac3acaddc18de4db105df9c71c270",
+      "html": "https://github.com/gitevents/Testing/blob/master/proposals.json"
+    }
+  },
+  "commit": {
+    "sha": "c45ccce864147ebe8201937ddaffc128551953da",
+    "url": "https://api.github.com/repos/gitevents/Testing/git/commits/c45ccce864147ebe8201937ddaffc128551953da",
+    "html_url": "https://github.com/gitevents/Testing/commit/c45ccce864147ebe8201937ddaffc128551953da",
+    "author": {
+      "name": "BarcelonaJS Bot",
+      "email": "info@barcelonajs.org",
+      "date": "2015-08-04T16:39:20Z"
+    },
+    "committer": {
+      "name": "BarcelonaJS Bot",
+      "email": "info@barcelonajs.org",
+      "date": "2015-08-04T16:39:20Z"
+    },
+    "tree": {
+      "sha": "629ad59130c4570656a6fd5fdad3d66aa48ff0a6",
+      "url": "https://api.github.com/repos/gitevents/Testing/git/trees/629ad59130c4570656a6fd5fdad3d66aa48ff0a6"
+    },
+    "message": "Created proposals",
+    "parents": [
+      {
+        "sha": "fdcd7c9e6e4dfd27fbd90601a304f9fe7fdefe48",
+        "url": "https://api.github.com/repos/gitevents/Testing/git/commits/fdcd7c9e6e4dfd27fbd90601a304f9fe7fdefe48",
+        "html_url": "https://github.com/gitevents/Testing/commit/fdcd7c9e6e4dfd27fbd90601a304f9fe7fdefe48"
+      }
+    ]
+  }
+}

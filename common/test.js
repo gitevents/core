@@ -1,13 +1,16 @@
 'use strict';
 
-var github = require('./github.credentials');
-var meetup = require('./meetup.credentials');
-
 module.exports = {
-  debug: true,
+  debug: false,
   mail: {},
-  github: github,
-  meetup: meetup,
+  github: {
+    user: 'gitevents',
+    repo: 'Testing',
+    token: 'helloworld'
+  },
+  meetup: {
+    token: 'abc'
+  },
   labels: {
     job: 'jobs',
     talk: 'talk',

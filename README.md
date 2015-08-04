@@ -17,7 +17,7 @@ This service will **not** generate a website for you, but an example is coming s
 ## Setup
 
 1. Go to https://github.com/settings/tokens and create a token for your GitEvents application
-2. Create `common/github.config.js` with the contents:
+2. Create `common/github.credentials.js` with the contents:
 ```
     module.exports = {
       user: '[repo username]',
@@ -26,6 +26,18 @@ This service will **not** generate a website for you, but an example is coming s
     }
 ```
 3. Build the docker container
+
+## How to run gitevents?
+
+Start the development server:
+
+    npm run dev
+
+Run the tests:
+
+    npm run test
+
+
 
 ## To Do
 

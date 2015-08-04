@@ -1,12 +1,8 @@
-var
-  debug = require('debug')('gitevents'),
-  config = require('./common/config'),
-  crypto = require('crypto'),
-  http = require('http');
-
-// integrations
-var webhook = require('gitevents-webhook')(config);
-// twitter = require('./integrations/gitup-twitter')(config);
+var debug = require('debug')('gitevents');
+var config = require('./common/config');
+var handler = require('./lib/handler');
+var crypto = require('crypto');
+var http = require('http');
 
 var server = http.createServer(function(req, res) {
   console.log(req.method + ' ' + req.url);
@@ -29,9 +25,8 @@ var server = http.createServer(function(req, res) {
     });
 
     req.on('end', function() {
-      var
-        hmac,
-        calculatedSignature;
+      var hmac;
+      var calculatedSignature;
 
       hmac = crypto.createHmac('sha1', config.github.secret);
       hmac.update(body);
@@ -63,25 +58,17 @@ var server = http.createServer(function(req, res) {
           res.writeHeader(200, {
             'Content-Type': 'text/plain'
           });
-          res.write('Hello GitHub.')
+          res.write('Hello GitHub.');
           res.end();
         } else {
-          // process data
-          debug('Processing from: ' + data.sender.login);
-          webhook.process(data, function(error, event) {
-            if (error) {
-              debug('webhook error: ', error);
-              res.writeHeader(500, {
-                'Content-Type': 'text/plain'
-              });
-              res.write(error);
-              res.end();
-            } else {
-              res.writeHeader(204, {
-                'Content-Type': 'application/json'
-              });
-              res.end();
-            }
+          res.writeHeader(204, {
+            'Content-Type': 'application/json'
+          });
+          res.end();
+
+          debug('Processing.');
+          handler(data, function(error, result) {
+            console.log(error, result);
           });
         }
       }
