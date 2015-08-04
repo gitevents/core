@@ -1,0 +1,45 @@
+{
+  "content": {
+    "name": "proposals.json",
+    "path": "proposals.json",
+    "sha": "58ab045e2586f053c7ce1e4d38a6442dadc3a8d6",
+    "size": 540,
+    "url": "https://api.github.com/repos/gitevents/Testing/contents/proposals.json?ref=master",
+    "html_url": "https://github.com/gitevents/Testing/blob/master/proposals.json",
+    "git_url": "https://api.github.com/repos/gitevents/Testing/git/blobs/58ab045e2586f053c7ce1e4d38a6442dadc3a8d6",
+    "download_url": "https://raw.githubusercontent.com/gitevents/Testing/master/proposals.json",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/gitevents/Testing/contents/proposals.json?ref=master",
+      "git": "https://api.github.com/repos/gitevents/Testing/git/blobs/58ab045e2586f053c7ce1e4d38a6442dadc3a8d6",
+      "html": "https://github.com/gitevents/Testing/blob/master/proposals.json"
+    }
+  },
+  "commit": {
+    "sha": "7a10652c34d66909fb3c3dc3bc84966e67b33c02",
+    "url": "https://api.github.com/repos/gitevents/Testing/git/commits/7a10652c34d66909fb3c3dc3bc84966e67b33c02",
+    "html_url": "https://github.com/gitevents/Testing/commit/7a10652c34d66909fb3c3dc3bc84966e67b33c02",
+    "author": {
+      "name": "BarcelonaJS Bot",
+      "email": "info@barcelonajs.org",
+      "date": "2015-08-04T16:31:35Z"
+    },
+    "committer": {
+      "name": "BarcelonaJS Bot",
+      "email": "info@barcelonajs.org",
+      "date": "2015-08-04T16:31:35Z"
+    },
+    "tree": {
+      "sha": "c3c821b7edcf3340aa53454e12c598fc338c86a6",
+      "url": "https://api.github.com/repos/gitevents/Testing/git/trees/c3c821b7edcf3340aa53454e12c598fc338c86a6"
+    },
+    "message": "New proposal by gitevents",
+    "parents": [
+      {
+        "sha": "8bcb0c134eba5b2cd85d9c663c70b67b7a33cde5",
+        "url": "https://api.github.com/repos/gitevents/Testing/git/commits/8bcb0c134eba5b2cd85d9c663c70b67b7a33cde5",
+        "html_url": "https://github.com/gitevents/Testing/commit/8bcb0c134eba5b2cd85d9c663c70b67b7a33cde5"
+      }
+    ]
+  }
+}

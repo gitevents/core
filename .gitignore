@@ -27,4 +27,4 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
-common/github.config.js
+common/*.credentials.js
