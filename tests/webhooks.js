@@ -32,19 +32,17 @@ nock('https://api.github.com:443')
   .reply(201, mockCreatedProposal);
 
 test('new issue', function(t) {
-  t.plan(2);
+  t.plan(1);
 
-  handler(opened, function(error, result) {
-    t.equals(error, null);
-    t.equals(result, 'Done.');
+  handler(proposed).then(function(onFulfilled, onRejected) {
+    t.equals(onRejected, undefined);
   });
 });
 
 test('create or update talk', function(t) {
-  t.plan(2);
+  t.plan(1);
 
-  handler(proposed, function(error, result) {
-    t.equals(error, null);
-    t.equals(result, 'Done.');
+  handler(proposed).then(function(onFulfilled, onRejected) {
+    t.equals(onRejected, undefined);
   });
 });
