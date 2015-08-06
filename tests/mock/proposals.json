@@ -1,0 +1,18 @@
+{
+  "name": "proposals.json",
+  "path": "proposals.json",
+  "sha": "dddca3182ceac3acaddc18de4db105df9c71c270",
+  "size": 586,
+  "url": "https://api.github.com/repos/barcelona-js/BarcelonaJS/contents/proposals.json?ref=master",
+  "html_url": "https://github.com/barcelona-js/BarcelonaJS/blob/master/proposals.json",
+  "git_url": "https://api.github.com/repos/barcelona-js/BarcelonaJS/git/blobs/dddca3182ceac3acaddc18de4db105df9c71c270",
+  "download_url": "https://raw.githubusercontent.com/barcelona-js/BarcelonaJS/master/proposals.json",
+  "type": "file",
+  "content": "WwogIHsKICAgICJpZCI6IDk4NjA4MTA4LAogICAgInR5cGUiOiAicHJvcG9z\nYWwiLAogICAgInNwZWFrZXIiOiB7CiAgICAgICJpZCI6IDEwNTc1NDMxLAog\nICAgICAibmFtZSI6ICJnaXRldmVudHMiLAogICAgICAibG9jYXRpb24iOiAi\nQmFyY2Vsb25hLCBTcGFpbiIsCiAgICAgICJnaXRodWIiOiAiZ2l0ZXZlbnRz\nIiwKICAgICAgImdyYXZhdGFyIjogIiIsCiAgICAgICJhdmF0YXIiOiAiaHR0\ncHM6Ly9hdmF0YXJzLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzEwNTc1NDMx\nP3Y9MyIsCiAgICAgICJ0d2l0dGVyIjogIllvdXJUd2l0dGVySGFuZGxlIgog\nICAgfSwKICAgICJ0aXRsZSI6ICJIZWxsbyBKYXZhU2NyaXB0IDQiLAogICAg\nImRlc2NyaXB0aW9uIjogIjxwPllvdXIgYXdlc29tZSB0YWxrIGRlc2NyaXB0\naW9uPC9wPlxuIiwKICAgICJsYW5ndWFnZSI6ICJlcyIsCiAgICAibGV2ZWwi\nOiAiYWR2YW5jZWQiLAogICAgIm1vbnRoIjogIlNlcHRlbWJlciIsCiAgICAi\ndXBkYXRlZF9hdCI6ICIyMDE1LTA4LTA0VDE2OjM4OjM1LjM3OVoiLAogICAg\nImNyZWF0ZWRfYXQiOiAiMjAxNS0wOC0wNFQxNjozODozNS4zNzlaIgogIH0K\nXQ==\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/barcelona-js/BarcelonaJS/contents/proposals.json?ref=master",
+    "git": "https://api.github.com/repos/barcelona-js/BarcelonaJS/git/blobs/dddca3182ceac3acaddc18de4db105df9c71c270",
+    "html": "https://github.com/barcelona-js/BarcelonaJS/blob/master/proposals.json"
+  }
+}

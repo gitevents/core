@@ -13,18 +13,19 @@ hookHandler.on('error', function(err) {
   console.log(err);
 });
 
-hookHandler.on('issue', function(payload) {
-  debug('Processing issue from: ' + payload.sender.login);
-  handler(payload).then(function (onFulfilled, onRejected) {
-    console.log('Done');
-  });
+hookHandler.on('issues', function(event) {
+  debug('New event: ' + event.event);
+
+  if (event.payload) {
+    handler(event.payload).then(function(onFulfilled, onRejected) {
+      console.log('Done');
+    });
+  }
 });
 
 http.createServer(function(req, res) {
-  handler(req, res, function() {
+  hookHandler(req, res, function(err) {
     res.statusCode = 404;
-    res.end('no such location');
+    res.end();
   });
-});
-
-http.listen(3000);
+}).listen(3000);

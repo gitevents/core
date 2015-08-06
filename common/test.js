@@ -6,6 +6,7 @@ module.exports = {
   github: {
     user: 'gitevents',
     repo: 'Testing',
+    secret: 'helloworld',
     token: 'helloworld'
   },
   meetup: {
