@@ -7,6 +7,7 @@
   "validateLineBreaks": "LF",
   "validateIndentation": 2,
   "disallowTrailingComma": true,
+  "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
 
   "disallowSpacesInsideObjectBrackets": null,
   "disallowImplicitTypeConversion": ["string"],

@@ -6,6 +6,7 @@ var meetup = require('./meetup.credentials');
 module.exports = {
   debug: true,
   mail: {},
+  url: 'http://barcelonajs.org',
   github: github,
   meetup: meetup,
   labels: {
