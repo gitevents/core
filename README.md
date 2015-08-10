@@ -1,6 +1,6 @@
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/GitEvents/gitevents?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![codeship](https://codeship.com/projects/3cb2d880-809c-0132-071e-4e80f7268ba4/status?branch=master)](https://codeship.com/projects/57517)
-[![Stories in Ready](https://badge.waffle.io/GitEvents/gitevents.png?label=ready&title=Ready)](https://waffle.io/GitEvents/gitevents)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/GitEvents/core)
+[![Codeship Status for GitEvents/core](https://codeship.com/projects/6222b470-21a6-0133-4352-0201d8755b1d/status?branch=master)](https://codeship.com/projects/95919)
+[![Stories in Ready](https://badge.waffle.io/GitEvents/core.svg?label=ready&title=Ready)](http://waffle.io/GitEvents/core)
 
 GitEvents
 =========
