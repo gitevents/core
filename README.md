@@ -81,7 +81,7 @@ Run the tests:
 
 ## Contact
 
-You can always get in touch in our community chat on [Gitter(https://gitter.im/GitEvents/core).
+You can always get in touch in our community chat on [Gitter](https://gitter.im/GitEvents/core).
 
 ### Want to help?
 
