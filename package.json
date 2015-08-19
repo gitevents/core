@@ -1,10 +1,10 @@
 {
   "name": "GitEvents",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "scripts": {
     "e2e": "DEBUG=* NODE_ENV=development tape tests/e2e-*.js",
-    "test": "DEBUG=* NODE_ENV=test tape tests/test-*.js",
+    "test": "DEBUG=gitevents* NODE_ENV=test tape tests/test-*.js",
     "start": "node gitevents.js",
     "dev": "DEBUG=* nodemon gitevents.js"
   },
