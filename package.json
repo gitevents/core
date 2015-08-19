@@ -3,8 +3,8 @@
   "version": "0.0.2",
   "private": false,
   "scripts": {
-    "e2e": "DEBUG=* NODE_ENV=development tape tests/webhooks-live-api.js",
-    "test": "DEBUG=* NODE_ENV=test tape tests/webhooks.js",
+    "e2e": "DEBUG=* NODE_ENV=development tape tests/e2e-*.js",
+    "test": "DEBUG=* NODE_ENV=test tape tests/test-*.js",
     "start": "node gitevents.js",
     "dev": "DEBUG=* nodemon gitevents.js"
   },
