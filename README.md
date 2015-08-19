@@ -1,5 +1,4 @@
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/GitEvents/core)
-[![Codeship Status for GitEvents/core](https://codeship.com/projects/6222b470-21a6-0133-4352-0201d8755b1d/status?branch=master)](https://codeship.com/projects/95919)
 [![Stories in Ready](https://badge.waffle.io/GitEvents/core.svg?label=ready&title=Ready)](http://waffle.io/GitEvents/core)
 
 GitEvents
