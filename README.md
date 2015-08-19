@@ -62,6 +62,16 @@ Run the tests:
     npm run test
 
 
+## Contribute
+
+    git clone https://github.com/GitEvents/core.git
+    npm install
+    cd node_modules
+    rm -rf gitevents-*
+    git clone https://github.com/GitEvents/gitevents-webhook
+    git clone https://github.com/GitEvents/gitevents-meetup
+    npm run test
+
 ## Backlog / Milestone
 - Stabilise core functionality and github issue handling
 - Test and fix meetup.com event creation and updates
@@ -70,7 +80,7 @@ Run the tests:
 
 ## Contact
 
-You can always get in touch in our community chat on [Gitter(https://gitter.im/GitEvents/core).
+You can always get in touch in our community chat on [Gitter](https://gitter.im/GitEvents/core).
 
 ### Want to help?
 
