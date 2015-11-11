@@ -23,7 +23,7 @@ It uses GitEvents web-hooks to talk to a node.js service which listens to your G
 ## How to I get it off the ground?
 
 1. Clone the repository <https://github.com/GitEvents/core>
-1. `npm install` (Underpants Gnomes ~ SECTION NEEDED)
+1. `npm run setup` (Underpants Gnomes ~ SECTION NEEDED)
 1. Win!
 
 ---
