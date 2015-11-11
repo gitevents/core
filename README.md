@@ -54,7 +54,7 @@ It uses GitEvents web-hooks to talk to a node.js service which listens to your G
     module.exports = {
       user: '[repo username]',
       repo: '[the repo you want to write to]',
-      token: '[your token]'
+      secret: '[your token]'
     }
 ```
 1. For meetup, create `common/meetup.credentials.js` with the contents:
