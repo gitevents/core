@@ -1,12 +1,32 @@
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/GitEvents/core)
 [![Stories in Ready](https://badge.waffle.io/GitEvents/core.svg?label=ready&title=Ready)](http://waffle.io/GitEvents/core)
 
-GitEvents
-=========
+# GitHub Issues + Your Event = GitEvents
 
-You're organising (or starting to organise) a user-group (be it JavaScript or anything else). Having trouble managing your time with all the tools and event apps out there?
+You're organising a Developer user-group. You use GitHub Issues in your day job to manage your workflow.  You're having trouble managing your event.  Why not solve your problem with the tools you know.  
 
-GitEvents is a node.js service which listens to your GitHub issues and triggers various events when new issues are labeled. You can create events on meetup.com, lanyrd.com, whatever.com; announce events via email newsletters, twitter; show upcoming events and talks on your user group website and much more, completely automated and all from one place: GitHub Issues.
+GitEvents uses a **GitHub Issues** to create, track and manage your **Events** as _Milestones_ and book **Talks** as _Issues_, which a progressed through a simple **Workflow** as _Labels_.
+
+It uses GitEvents web-hooks to talk to a node.js service which listens to your GitHub Issues.  This propogates events out to Social Networks (Facebook, Twitter, Google+) and Event Management sites (Tito, Meetup, Facebook, Google+) and keeps people informed (Tweets, Status Updates, Email).
+
+## How do I use it?
+
+... see our tutorial (coming soon) ...
+
+## What do I need?
+
+1. A github _Account_. <https://github.com/join>
+1. A _Repository_ per organisation. <https://github.com/new>
+1. A _Personal Access Token_ able to edit your repository
+1. A public web-server to host the software. <http://heroku.com>, <http://linode.com>, etc.
+
+## How to I get it off the ground?
+
+1. Clone the repository <https://github.com/GitEvents/core>
+1. `npm run setup` (Underpants Gnomes ~ SECTION NEEDED)
+1. Win!
+
+---
 
 ### Implemented so far:
 - GitEvents Core
@@ -26,6 +46,8 @@ GitEvents is a node.js service which listens to your GitHub issues and triggers 
 
 ### Setup
 
+
+##### Setup the software
 1. Go to https://github.com/settings/tokens and create a token for your GitEvents application
 1. Create `common/github.credentials.js` with the contents:
 ```
