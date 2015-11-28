@@ -44,4 +44,4 @@ coreos:
   fleet:
     public-ip: $public_ipv4
 ssh_authorized_keys:
-  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLLBveV68O6QSCcgAH3l54TxdGaOd5ywMIFapkbAFF4rHfsy975qbjq4tl3ijgMk5q3Fo9welXBRFiYCcAMqrjkhOyZqsFHNlEkrtAeilZlEX3HNerR2qhS9N7B1A05RxZ0Mmby0w5VgquUgoMg9wjRGSoCRh4TPFrVUKWhWZPbdqsmxps5YF5Wp6eblJ3ordEKTD5WHDJCdL8ikftC7S3uXnHj+uIOrQGzYY5SAmrCs1uZ3IyQIS0wmCRvFvy7zgdI92LdNE3fQ7jqQxzTMUBUhZ4hJL46i5J269OGE6ERglBbtxlvXv/vwmeolrVpAxLxrg8x40CJYdK0zS80bMJ patrick@bigmac.local
+  - ssh-rsa <your public key>
