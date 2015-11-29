@@ -10,7 +10,6 @@ GitEvents is a node.js service which listens to your GitHub issues and triggers 
 
 ### Implemented so far:
 - GitEvents Core
-- GitHub webhook adapter
 - Meetup.com plugin to create and update meetups.
 
 ### Coming soon
@@ -20,7 +19,7 @@ GitEvents is a node.js service which listens to your GitHub issues and triggers 
 
 ## Requirements
 
-1. A GitHub Repository for your event or usergroup (example: [BarcelonaJS](https://github.com/barcelona-js/BarcelonaJS))
+1. A GitHub Repository for your event or usergroup (example: [BarcelonaJS](https://github.com/BarcelonaJS/BarcelonaJS))
 1. `Issues` enabled on that repository (you can activate `Issues` in the repository settings)
 1. From the settings in `Webhooks & Services` create a webhook to your service ip (example: http://barcelonajs.org/github/delivery). `/github/delivery` is the required path.
 
@@ -49,10 +48,6 @@ module.exports = {
 
 ### How to run gitevents?
 
-You can start the service with:
-
-    npm run live
-
 Start the development server:
 
     npm run dev
@@ -66,10 +61,6 @@ Run the tests:
 
     git clone https://github.com/GitEvents/core.git
     npm install
-    cd node_modules
-    rm -rf gitevents-*
-    git clone https://github.com/GitEvents/gitevents-webhook
-    git clone https://github.com/GitEvents/gitevents-meetup
     npm run test
 
 ## Backlog / Milestone
