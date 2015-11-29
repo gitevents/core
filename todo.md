@@ -1,13 +1,7 @@
 ## To Do
 ### ``gitevents.js``
-(line 59) : add raygun.io / sentry / firebase error reporting here.
+(line 64) : add raygun.io / sentry / firebase error reporting here.
 
-
-### ``lib/handler.js``
-(line 18) : return meetup ID and store in event for further reference
-
-(line 21) : add Twitter integration
-
-(line 22) : add LanYrd intgegration
+(line 72) : "talk proposal" contains "talk", so this should be refactored. Going with "proposal" for now.
 
 ######Generated using [todo.md](https://github.com/charlesthomas/todo.md)
