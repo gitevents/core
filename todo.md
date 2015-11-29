@@ -1,6 +1,6 @@
 ## To Do
 ### ``gitevents.js``
-(line 56) : add raygun.io / sentry / firebase error reporting here.
+(line 59) : add raygun.io / sentry / firebase error reporting here.
 
 
 ### ``lib/handler.js``
