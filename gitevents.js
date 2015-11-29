@@ -38,6 +38,7 @@ hookHandler.on('issues', function(event) {
           'user-agent': 'GitEvents'
         }
       });
+      var labels;
 
       github.authenticate({
         type: 'oauth',
@@ -46,9 +47,13 @@ hookHandler.on('issues', function(event) {
 
       debug('label: ' + payload.label.name);
 
-      var labels = payload.labels.map(function(label) {
-        return label.name;
-      });
+      if (payload.labels) {
+        labels = payload.labels.map(function(label) {
+          return label.name;
+        });
+      } else {
+        labels = payload.label.name;
+      }
 
       github.user.getFrom({
         user: payload.sender.login
@@ -60,14 +65,15 @@ hookHandler.on('issues', function(event) {
         } else {
           payload.gitHubUser = user;
 
-          if (labels.indexOf(config.labels.proposal) >= -1) {
+          if (labels.indexOf(config.labels.proposal) > -1) {
             debug('New talk proposal. Nothing to do yet');
           }
 
-          if (labels.indexOf(config.labels.talk) >= -1) {
-            debug('New talk: ' + payload.title);
+          //TODO: "talk proposal" contains "talk", so this should be refactored. Going with "proposal" for now.
+          if (labels.indexOf(config.labels.talk) > -1) {
+            debug('New talk: ' + payload.issue.title);
 
-            talks(payload, function(onFulfilled, onRejected) {
+            talks(payload, github, function(onFulfilled, onRejected) {
               console.log('talk processed.');
             });
           }

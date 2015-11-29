@@ -48,9 +48,13 @@ module.exports = {
 
 ### How to run gitevents?
 
-Start the development server:
+1) Start the development server: `npm run dev`
+2) Start localtunnel (`npm i -g localtunnel`): `lt -p 3000`
+3) Go to your test-repo webhook settings: `https://github.com/PatrickHeneise/gitup-testing/settings/hooks`
+4) Add or modify the webhook with the localtunnel url
+5) Create, label, and play with issues and milestones
 
-    npm run dev
+Or:
 
 Run the tests:
 
