@@ -1,20 +1,18 @@
 FROM phusion/baseimage
 MAINTAINER Patrick Heneise <patrick@blended.io>
 
-# Use baseimage-docker's init system.
-CMD ["/sbin/my_init"]
+CMD         ["/sbin/my_init"]
 
-RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
-RUN apt-get update
-RUN apt-get install -y python-software-properties python g++ make nodejs git
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN         curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+RUN         apt-get update
+RUN         apt-get install -y python-software-properties python g++ make nodejs git
+RUN         apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Bundle app source
-ADD     . /src
+ADD         . /src
+RUN         cd /src; npm install; npm update
 
-# Install app dependencies
-RUN     cd /src; npm install; npm update
+ENV         NODE_ENV production
 
-ENV NODE_ENV production
-
-CMD     ["/usr/bin/node", "/src/gitevents.js"]
+ENTRYPOINT  ["/bin/sh", "/src/download_config.sh"]
+CMD         ["/usr/bin/node", "/src/gitevents.js"]

@@ -36,57 +36,7 @@ test('When a new issue is created without labels, do nothing.', function(t) {
   });
 });
 
-test('When a proposal is passed the first time, generate proposals.json', function(t) {
-  t.plan(1);
-
-  nock('https://api.github.com:443')
-    .get('/users/gitevents')
-    .query({
-      'access_token': config.github.token
-    })
-    .reply(200, mockUser)
-    .get('/repos/gitevents/Testing/contents/proposals.json')
-    .query({
-      'access_token': config.github.token
-    })
-    .reply(404)
-    .put('/repos/gitevents/Testing/contents/proposals.json')
-    .query({
-      'access_token': config.github.token
-    })
-    .reply(201, mockCreatedProposal);
-
-  handler(proposed).then(function(onFulfilled, onRejected) {
-    t.equals(onRejected, undefined);
-  });
-});
-
-test('When the same proposal is passed again, update proposals.json', function(t) {
-  t.plan(1);
-
-  nock('https://api.github.com:443')
-    .get('/users/gitevents')
-    .query({
-      'access_token': config.github.token
-    })
-    .reply(200, mockUser)
-    .get('/repos/gitevents/Testing/contents/proposals.json')
-    .query({
-      'access_token': config.github.token
-    })
-    .reply(200, mockProposals)
-    .put('/repos/gitevents/Testing/contents/proposals.json')
-    .query({
-      'access_token': config.github.token
-    })
-    .reply(201, mockCreatedProposal);
-
-  handler(proposed).then(function(onFulfilled, onRejected) {
-    t.equals(onRejected, undefined);
-  });
-});
-
-test('When a proposal is marked as talk, update proposals.json and event.json', function(t) {
+test('When a proposal is marked as talk update/create events-YYYY.json', function(t) {
   t.plan(1);
 
   nock('https://api.github.com:443')
