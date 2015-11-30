@@ -1,22 +1,18 @@
-FROM centos:centos7
-MAINTAINER BarcelonaJS
+FROM phusion/baseimage
+MAINTAINER Patrick Heneise <patrick@blended.io>
 
-# Enable EPEL for Node.js
-RUN     yum install deltarpm -y
-RUN     rpm -Uvh http://mirror.uv.es/mirror/fedora-epel/7/x86_64/e/epel-release-7-5.noarch.rpm
-RUN     yum update -y
-RUN     yum groupinstall 'Development Tools' -y
-RUN     yum --enablerepo=centosplus install nodejs npm -y
+CMD         ["/sbin/my_init"]
+
+RUN         curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+RUN         apt-get update
+RUN         apt-get install -y python-software-properties python g++ make nodejs git
+RUN         apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Bundle app source
-ADD     . /src
+ADD         . /src
+RUN         cd /src; npm install; npm update
 
-# Install app dependencies
-RUN     cd /src; npm install; npm update
+ENV         NODE_ENV production
 
-ENV NODE_ENV production
-ENV DEBUG *
-
-CMD     ["/usr/bin/node", "/src/server.js"]
-
-EXPOSE  3000
+ENTRYPOINT  ["/bin/sh", "/src/download_config.sh"]
+CMD         ["/usr/bin/node", "/src/gitevents.js"]

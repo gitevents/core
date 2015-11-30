@@ -30,7 +30,6 @@ It uses GitEvents web-hooks to talk to a node.js service which listens to your G
 
 ### Implemented so far:
 - GitEvents Core
-- GitHub webhook adapter
 - Meetup.com plugin to create and update meetups.
 
 ### Coming soon
@@ -40,9 +39,10 @@ It uses GitEvents web-hooks to talk to a node.js service which listens to your G
 
 ## Requirements
 
-1. A GitHub Repository for your event or usergroup (example: [BarcelonaJS](https://github.com/barcelona-js/BarcelonaJS))
+1. A GitHub Repository for your event or usergroup (example: [BarcelonaJS](https://github.com/BarcelonaJS/BarcelonaJS))
 1. `Issues` enabled on that repository (you can activate `Issues` in the repository settings)
 1. From the settings in `Webhooks & Services` create a webhook to your service ip (example: http://barcelonajs.org/github/delivery). `/github/delivery` is the required path.
+1. A personal access token for the organisation or your profile, including repo write access (https://github.com/settings/tokens)
 
 ### Setup
 
@@ -71,13 +71,13 @@ module.exports = {
 
 ### How to run gitevents?
 
-You can start the service with:
+1) Start the development server: `npm run dev`
+2) Start localtunnel (`npm i -g localtunnel`): `lt -p 3000`
+3) Go to your test-repo webhook settings: `https://github.com/PatrickHeneise/gitup-testing/settings/hooks`
+4) Add or modify the webhook with the localtunnel url
+5) Create, label, and play with issues and milestones
 
-    npm run live
-
-Start the development server:
-
-    npm run dev
+Or:
 
 Run the tests:
 
@@ -88,10 +88,6 @@ Run the tests:
 
     git clone https://github.com/GitEvents/core.git
     npm install
-    cd node_modules
-    rm -rf gitevents-*
-    git clone https://github.com/GitEvents/gitevents-webhook
-    git clone https://github.com/GitEvents/gitevents-meetup
     npm run test
 
 ## Backlog / Milestone

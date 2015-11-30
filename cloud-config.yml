@@ -1,0 +1,47 @@
+#cloud-config
+
+coreos:
+  etcd:
+    discovery: https://discovery.etcd.io/<token>
+    addr: $public_ipv4:4001
+    peer-addr: $private_ipv4:7001
+  units:
+    - name: etcd.service
+      command: start
+    - name: fleet.service
+      command: start
+    - name: gitevents-proxy.service
+      command: start
+      content: |
+        [Unit]
+        Description=Nginx Proxy
+
+        [Service]
+        User=core
+        TimeoutStartSec=0
+        ExecStartPre=-/usr/bin/docker kill api-proxy
+        ExecStartPre=-/usr/bin/docker rm api-proxy
+        ExecStartPre=/usr/bin/docker pull quay.io/gitevents/proxy
+        ExecStart=/usr/bin/docker run --net=host --restart=always --name=api-proxy quay.io/gitevents/proxy
+        ExecStop=/usr/bin/docker stop proxy
+    - name: gitevents.service
+      command: start
+      content: |
+        [Unit]
+        Description=API
+        After=docker.service
+
+        [Service]
+        User=core
+        TimeoutStartSec=0
+        ExecStartPre=-/usr/bin/docker kill gitevents
+        ExecStartPre=-/usr/bin/docker rm gitevents
+        ExecStartPre=/usr/bin/docker pull quay.io/gitevents/gitevents
+        ExecStart=/usr/bin/docker run -p 127.0.0.1:3001:3001 --restart=always --name=gitevents quay.io/gitevents/gitevents
+        ExecStop=/usr/bin/docker stop gitevents
+        Restart=on-failure
+        RestartSec=5
+  fleet:
+    public-ip: $public_ipv4
+ssh_authorized_keys:
+  - ssh-rsa <your public key>

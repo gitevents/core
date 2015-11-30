@@ -12,6 +12,6 @@ module.exports = {
   labels: {
     job: 'jobs',
     talk: 'talk',
-    proposal: 'talk proposal'
+    proposal: 'proposal'
   }
 };
