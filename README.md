@@ -1,3 +1,4 @@
+[![Docker Repository on Quay](https://quay.io/repository/gitevents/gitevents/status "Docker Repository on Quay")](https://quay.io/repository/gitevents/gitevents)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/GitEvents/core)
 [![Stories in Ready](https://badge.waffle.io/GitEvents/core.svg?label=ready&title=Ready)](http://waffle.io/GitEvents/core)
 
