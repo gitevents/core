@@ -13,6 +13,4 @@ ADD         . /src
 RUN         cd /src; npm install; npm update
 
 ENV         NODE_ENV production
-
-ENTRYPOINT  ["/bin/sh", "/src/download_config.sh"]
-CMD         ["/usr/bin/node", "/src/gitevents.js"]
+CMD         ["/bin/sh", "/src/init.sh"]

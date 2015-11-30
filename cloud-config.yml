@@ -14,21 +14,21 @@ coreos:
       command: start
       content: |
         [Unit]
-        Description=Nginx Proxy
+        Description=gitevents Proxy
 
         [Service]
         User=core
         TimeoutStartSec=0
-        ExecStartPre=-/usr/bin/docker kill api-proxy
-        ExecStartPre=-/usr/bin/docker rm api-proxy
+        ExecStartPre=-/usr/bin/docker kill gitevents-proxy
+        ExecStartPre=-/usr/bin/docker rm gitevents-proxy
         ExecStartPre=/usr/bin/docker pull quay.io/gitevents/proxy
-        ExecStart=/usr/bin/docker run --net=host --restart=always --name=api-proxy quay.io/gitevents/proxy
-        ExecStop=/usr/bin/docker stop proxy
+        ExecStart=/usr/bin/docker run --net=host --restart=always --name=gitevents-proxy quay.io/gitevents/proxy
+        ExecStop=/usr/bin/docker stop gitevents-proxy
     - name: gitevents.service
       command: start
       content: |
         [Unit]
-        Description=API
+        Description=gitevents Core
         After=docker.service
 
         [Service]
@@ -37,11 +37,9 @@ coreos:
         ExecStartPre=-/usr/bin/docker kill gitevents
         ExecStartPre=-/usr/bin/docker rm gitevents
         ExecStartPre=/usr/bin/docker pull quay.io/gitevents/gitevents
-        ExecStart=/usr/bin/docker run -p 127.0.0.1:3001:3001 --restart=always --name=gitevents quay.io/gitevents/gitevents
+        ExecStart=/usr/bin/docker run -p 127.0.0.1:3000:3000 --restart=always --name=gitevents -e "CONFIG_URL=<production.js>" quay.io/gitevents/gitevents
         ExecStop=/usr/bin/docker stop gitevents
         Restart=on-failure
         RestartSec=5
   fleet:
     public-ip: $public_ipv4
-ssh_authorized_keys:
-  - ssh-rsa <your public key>
