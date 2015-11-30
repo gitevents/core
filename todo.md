@@ -4,4 +4,8 @@
 
 (line 72) : "talk proposal" contains "talk", so this should be refactored. Going with "proposal" for now.
 
+
+### ``tests/talks.js``
+(line 37) : not implemented yet
+
 ######Generated using [todo.md](https://github.com/charlesthomas/todo.md)

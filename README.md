@@ -22,6 +22,7 @@ GitEvents is a node.js service which listens to your GitHub issues and triggers 
 1. A GitHub Repository for your event or usergroup (example: [BarcelonaJS](https://github.com/BarcelonaJS/BarcelonaJS))
 1. `Issues` enabled on that repository (you can activate `Issues` in the repository settings)
 1. From the settings in `Webhooks & Services` create a webhook to your service ip (example: http://barcelonajs.org/github/delivery). `/github/delivery` is the required path.
+1. A personal access token for the organisation or your profile, including repo write access (https://github.com/settings/tokens)
 
 ### Setup
 
