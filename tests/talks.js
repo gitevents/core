@@ -34,5 +34,10 @@ test.skip('issue: labeled "talk" - verify important data isn\'t overwritten with
 
 test.skip('issue: unlabeled "talk" should remove a talk from the event', function(t) {
   // unlabeled_talk_with_milestone.json
-  //TODO: not implemented yet
+  //TODO: remove talk not implemented yet
+});
+
+test.skip('issue: closed should move a talk to `history.json`', function(t) {
+  // closed_talk.json
+  //TODO: archive talk not implemented yet
 });

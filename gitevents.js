@@ -4,6 +4,21 @@ var debug = require('debug')('gitevents');
 var talks = require('./lib/talks');
 var gitWebhook = require('github-webhook-handler');
 var GitHubApi = require('github');
+var express = require('express');
+var bodyParser = require('body-parser');
+var cors = require('cors');
+var jwt = require('express-jwt');
+
+var authenticate = jwt({
+  secret: config.auth.secret,
+  audience: config.auth.audience
+});
+
+var app = express();
+
+app.set('port', process.env.PORT || 3000);
+
+app.use(cors());
 
 if (!config || !config.github) {
   process.exit(-1);
@@ -85,9 +100,12 @@ hookHandler.on('issues', function(event) {
   }
 });
 
-http.createServer(function(req, res) {
+app.post('/github/delivery', function(req, res) {
   hookHandler(req, res, function(err) {
-    res.statusCode = 404;
-    res.end();
+    res.status(404).send();
   });
-}).listen(3000);
+});
+
+var server = app.listen(app.get('port'), function() {
+  debug('gitevents server listening on port ' + server.address().port);
+});
