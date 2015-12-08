@@ -1,0 +1,44 @@
+{
+  "@context": "http://schema.org",
+  "@type": "Social event",
+  "id": "barcelonajs-december-2016",
+  "name": "BarcelonaJS December 2016",
+  "location": {
+    "@type": "Place",
+    "name": "Mobile World Centre",
+    "url": "https://www.mobileworldcentre.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Barcelona, Spain",
+      "postalCode": "08001",
+      "streetAddress": "C/ Fontanella 2"
+    }
+  },
+  "organizer": {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Barcelona, Spain",
+      "postalCode": "08003",
+      "streetAddress": "C/ Mare de Deu del Pilar 20"
+    },
+    "email": "hola(at)barcelonajs.org",
+    "name": "BarcelonaJS"
+  },
+  "performer": [{
+    "@type": "Person",
+    "image": "https://avatars1.githubusercontent.com/u/19480?v=3&s=400",
+    "name": "Testuser 1",
+    "sameAs": "http://www.github.com/testuser",
+    "url": "/talks/20161212-talk-1"
+		}, {
+    "@type": "Person",
+    "image": "https://avatars1.githubusercontent.com/u/19480?v=3&s=400",
+    "name": "Testuser 2",
+    "sameAs": "http://www.github.com/testuser",
+    "url": "/talks/20161212-talk-2"
+		}],
+  "startDate": "2016-12-12T18:45",
+  "url": "/events/barcelonajs-december-2016"
+}

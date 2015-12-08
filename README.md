@@ -13,9 +13,9 @@ It uses GitEvents web-hooks to talk to a node.js service which listens to your G
 ## How do I use it?
 ### What do I need?
 
-1. A github _Account_. <https://github.com/join>
-1. A _Repository_ per organisation. <https://github.com/new>
-1. A _Personal Access Token_ able to edit your repository
+1. A [github _Account_](https://github.com/join)
+1. A [_Repository_ per organisation](https://github.com/new)
+1. A [_Personal Access Token_](https://github.com/settings/tokens/new) able to edit your repository
 1. A public web-server to host the software
 1. A GitHub Repository for your event or usergroup (example: [BarcelonaJS](https://github.com/BarcelonaJS/BarcelonaJS))
 1. `Issues` enabled on that repository (you can activate `Issues` in the repository settings)
