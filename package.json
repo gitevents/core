@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "istanbul": "^0.4.1",
-    "nock": "^2.9.1",
+    "nock": "^3.4.0",
     "supertest": "^1.0.1",
     "tape": "^4.0.1"
   }
