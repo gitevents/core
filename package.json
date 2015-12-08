@@ -6,6 +6,7 @@
   "scripts": {
     "e2e": "NODE_ENV=development tape tests/*.js",
     "test": "NODE_ENV=test tape tests/*.js",
+    "cover": "istanbul cover tests/*.js",
     "start": "node gitevents.js",
     "dev": "DEBUG=* nodemon gitevents.js"
   },
@@ -26,6 +27,7 @@
     "yaml-front-matter": "^3.2.3"
   },
   "devDependencies": {
+    "istanbul": "^0.4.1",
     "nock": "^3.4.0",
     "supertest": "^1.0.1",
     "tape": "^4.0.1"
