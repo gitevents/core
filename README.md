@@ -1,19 +1,19 @@
 [![npm](https://img.shields.io/npm/v/gitevents.svg)](https://www.npmjs.com/package/gitevents)
-[![build status](https://travis-ci.org/GitEvents/core.svg)](https://travis-ci.org/GitEvents/core)
+[![build status](https://travis-ci.org/gitevents/core.svg)](https://travis-ci.org/gitevents/core)
 [![docker](https://quay.io/repository/gitevents/gitevents/status "Docker Repository on Quay")](https://quay.io/repository/gitevents/gitevents)
-[![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/GitEvents/core)
-[![code climate](https://codeclimate.com/github/GitEvents/core/badges/gpa.svg)](https://codeclimate.com/github/GitEvents/core)
-[![test coverage](https://codeclimate.com/github/GitEvents/core/badges/coverage.svg)](https://codeclimate.com/github/GitEvents/core/coverage)
-[![issue count](https://codeclimate.com/github/GitEvents/core/badges/issue_count.svg)](https://codeclimate.com/github/GitEvents/core)
+[![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gitevents/core)
+[![code climate](https://codeclimate.com/github/gitevents/core/badges/gpa.svg)](https://codeclimate.com/github/gitevents/core)
+[![test coverage](https://codeclimate.com/github/gitevents/core/badges/coverage.svg)](https://codeclimate.com/github/gitevents/core/coverage)
+[![issue count](https://codeclimate.com/github/gitevents/core/badges/issue_count.svg)](https://codeclimate.com/github/gitevents/core)
 
 
-# GitHub Issues + Your Event = GitEvents
+# GitHub Issues + Your Event = gitevents
 
 You're organising a Developer user-group. You use GitHub Issues in your day job to manage your workflow.  You're having trouble managing your event.  Why not solve your problem with the tools you know.  
 
-GitEvents uses a **GitHub Issues** to create, track and manage your **Events** as _Milestones_ and book **Talks** as _Issues_, which a progressed through a simple **Workflow** as _Labels_.
+gitevents uses a **GitHub Issues** to create, track and manage your **Events** as _Milestones_ and book **Talks** as _Issues_, which a progressed through a simple **Workflow** as _Labels_.
 
-It uses GitEvents web-hooks to talk to a node.js service which listens to your GitHub Issues.  This propogates events out to Social Networks (Facebook, Twitter, Google+) and Event Management sites (Tito, Meetup, Facebook, Google+) and keeps people informed (Tweets, Status Updates, Email).
+It uses gitevents web-hooks to talk to a node.js service which listens to your GitHub Issues.  This propogates events out to Social Networks (Facebook, Twitter, Google+) and Event Management sites (Tito, Meetup, Facebook, Google+) and keeps people informed (Tweets, Status Updates, Email).
 
 ## How do I use it?
 ### What do I need?
@@ -31,7 +31,7 @@ It uses GitEvents web-hooks to talk to a node.js service which listens to your G
 ### Almost-just-one-click-ready-to-launch version:
 
 1. Create a secret [gist](https://gist.github.com) with your production config. Name it `gitevents.js` (needs to contain at least github api token and repository info)
-  1. Go to https://github.com/settings/tokens and create a token for your GitEvents application
+  1. Go to https://github.com/settings/tokens and create a token for your gitevents application
   1. Create the gist with the contents:
   ```
     'use strict';
@@ -102,7 +102,7 @@ Run the tests:
     npm run test
 
 ### Implemented so far:
-- GitEvents Core
+- gitevents Core
 - Meetup.com plugin to create and update meetups.
 
 ### Coming soon
@@ -113,7 +113,7 @@ Run the tests:
 
 ## Contribute
 
-    git clone https://github.com/GitEvents/core.git
+    git clone https://github.com/gitevents/core.git
     npm install
     npm run test
 
@@ -125,7 +125,7 @@ Run the tests:
 
 ## Contact
 
-You can always get in touch in our community chat on [Gitter](https://gitter.im/GitEvents/core).
+You can always get in touch in our community chat on [Gitter](https://gitter.im/gitevents/core).
 
 ### Want to help?
 
