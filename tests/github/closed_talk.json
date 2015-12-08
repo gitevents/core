@@ -1,14 +1,14 @@
 {
-  "action": "labeled",
+  "action": "closed",
   "issue": {
-    "url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/12",
-    "labels_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/12/labels{/name}",
-    "comments_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/12/comments",
-    "events_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/12/events",
-    "html_url": "https://github.com/PatrickHeneise/gitup-testing/issues/12",
-    "id": 119367606,
-    "number": 12,
-    "title": "Your Awesome Talk",
+    "url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/13",
+    "labels_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/13/labels{/name}",
+    "comments_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/13/comments",
+    "events_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/13/events",
+    "html_url": "https://github.com/PatrickHeneise/gitup-testing/issues/13",
+    "id": 119549988,
+    "number": 13,
+    "title": "Your Even More Awesome Talk",
     "user": {
       "login": "testuser",
       "id": 74390,
@@ -35,7 +35,7 @@
         "color": "009800"
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "milestone": {
@@ -45,7 +45,7 @@
       "id": 939881,
       "number": 1,
       "title": "Some NodeJS Event in the Future",
-      "description": "19.00;Mobile World Centre;C/ Fontanella 2;08003;Barcelona Spain",
+      "description": "19.00;Mobile World Centre;C/ Fontanella 2",
       "creator": {
         "login": "PatrickHeneise",
         "id": 74390,
@@ -66,23 +66,18 @@
         "site_admin": false
       },
       "open_issues": 1,
-      "closed_issues": 4,
+      "closed_issues": 5,
       "state": "open",
       "created_at": "2015-01-17T16:15:43Z",
-      "updated_at": "2015-11-29T17:03:27Z",
+      "updated_at": "2015-12-01T11:57:52Z",
       "due_on": "2034-12-30T23:00:00Z",
       "closed_at": null
     },
     "comments": 1,
-    "created_at": "2015-11-29T16:03:17Z",
-    "updated_at": "2015-11-29T17:03:47Z",
-    "closed_at": null,
-    "body": "---\r\nlevel: beginner\r\nlanguage: en\r\ntwitter: PatrickHeneise\r\nmonth: February\r\n\r\n---\r\nYour awesome talk description"
-  },
-  "label": {
-    "url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/labels/talk",
-    "name": "talk",
-    "color": "009800"
+    "created_at": "2015-11-30T18:20:54Z",
+    "updated_at": "2015-12-01T11:57:52Z",
+    "closed_at": "2015-12-01T11:57:52Z",
+    "body": "---\r\nlevel: expert\r\nlanguage: en\r\ntwitter: YourTwitterHandle\r\nmonth: December\r\n\r\n---\r\n\r\nYour super awesome talk description"
   },
   "repository": {
     "id": 29391416,
@@ -149,13 +144,13 @@
     "releases_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/releases{/id}",
     "created_at": "2015-01-17T13:07:23Z",
     "updated_at": "2015-01-17T13:07:23Z",
-    "pushed_at": "2015-11-09T12:54:35Z",
+    "pushed_at": "2015-11-30T20:22:25Z",
     "git_url": "git://github.com/PatrickHeneise/gitup-testing.git",
     "ssh_url": "git@github.com:PatrickHeneise/gitup-testing.git",
     "clone_url": "https://github.com/PatrickHeneise/gitup-testing.git",
     "svn_url": "https://github.com/PatrickHeneise/gitup-testing",
     "homepage": null,
-    "size": 140,
+    "size": 9,
     "stargazers_count": 0,
     "watchers_count": 0,
     "language": null,
