@@ -1,6 +1,11 @@
-[![Docker Repository on Quay](https://quay.io/repository/gitevents/gitevents/status "Docker Repository on Quay")](https://quay.io/repository/gitevents/gitevents)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/GitEvents/core)
-[![Stories in Ready](https://badge.waffle.io/GitEvents/core.svg?label=ready&title=Ready)](http://waffle.io/GitEvents/core)
+[![npm](https://img.shields.io/npm/v/gitevents.svg)](https://www.npmjs.com/package/gitevents)
+[![build status](https://travis-ci.org/GitEvents/core.svg)](https://travis-ci.org/GitEvents/core)
+[![docker](https://quay.io/repository/gitevents/gitevents/status "Docker Repository on Quay")](https://quay.io/repository/gitevents/gitevents)
+[![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/GitEvents/core)
+[![code climate](https://codeclimate.com/github/GitEvents/core/badges/gpa.svg)](https://codeclimate.com/github/GitEvents/core)
+[![test coverage](https://codeclimate.com/github/GitEvents/core/badges/coverage.svg)](https://codeclimate.com/github/GitEvents/core/coverage)
+[![issue count](https://codeclimate.com/github/GitEvents/core/badges/issue_count.svg)](https://codeclimate.com/github/GitEvents/core)
+
 
 # GitHub Issues + Your Event = GitEvents
 
