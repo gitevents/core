@@ -1,5 +1,5 @@
 {
-  "name": "GitEvents",
+  "name": "gitevents",
   "version": "0.2.0",
   "private": false,
   "repository": "https://github.com/gitevents/core.git",
@@ -16,7 +16,7 @@
     "debug": "~2.0.0",
     "express": "^4.13.3",
     "express-jwt": "^3.3.0",
-    "gitevents-meetup": "git://github.com/GitEvents/gitevents-meetup.git",
+    "gitevents-meetup": "git://github.com/gitevents/gitevents-meetup.git",
     "github": "^0.2.4",
     "github-webhook-handler": "0.5.0",
     "json2yaml": "^1.0.3",
