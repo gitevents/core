@@ -1,0 +1,16 @@
+language: "node_js"
+env: DEBUG=*
+branches:
+  only:
+    - master
+node_js:
+  - "0.8"
+  - "0.10"
+  - "0.11"
+  - "0.12"
+  - "iojs"
+os:
+  - linux
+  - osx
+before_install:
+  - npm update -g npm
