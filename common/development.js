@@ -1,8 +1,17 @@
 'use strict';
+var fs = require('fs');
+var path = require('path');
 
+var meetup = {};
+var auth = {};
 var github = require('./github.credentials');
-var meetup = require('./meetup.credentials');
-var auth = require('./auth.credentials');
+
+try {
+  fs.accessSync(__dirname + '/meetup.credentials.js');
+  meetup = require('./meetup.credentials');
+} catch (e) {
+  console.log('Missing meetup credentials, running without');
+}
 
 module.exports = {
   debug: true,

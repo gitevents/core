@@ -1,14 +1,11 @@
-var http = require('http');
 var config = require('./common/config');
 var debug = require('debug')('gitevents');
 var talks = require('./lib/talks');
 var events = require('./lib/events');
 var gitWebhook = require('github-webhook-handler');
-var GitHubApi = require('github');
 var express = require('express');
-var bodyParser = require('body-parser');
 var cors = require('cors');
-var jwt = require('express-jwt');
+// var jwt = require('express-jwt');
 
 // var authenticate = jwt({
 //   secret: config.auth.secret,
@@ -47,6 +44,8 @@ hookHandler.on('issues', function(event) {
     if (payload.action === 'labeled') {
       debug('label: ' + payload.label.name);
 
+      var labels = [];
+
       if (payload.labels) {
         labels = payload.labels.map(function(label) {
           return label.name;
@@ -57,6 +56,14 @@ hookHandler.on('issues', function(event) {
 
       if (labels.indexOf(config.labels.proposal) > -1) {
         debug('New talk proposal. Nothing to do yet');
+      }
+
+      if (labels.indexOf(config.labels.event) > -1) {
+        debug('New event planning.');
+
+        events(payload).then(function(event) {
+
+        });
       }
 
       //TODO: "talk proposal" contains "talk", so this should be refactored. Going with "proposal" for now.
@@ -82,7 +89,7 @@ hookHandler.on('issues', function(event) {
 });
 
 app.post('/github/delivery', function(req, res) {
-  hookHandler(req, res, function(err) {
+  hookHandler(req, res, function() {
     res.status(404).send();
   });
 });

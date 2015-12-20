@@ -29,6 +29,7 @@
   "devDependencies": {
     "istanbul": "^0.4.1",
     "nock": "^3.4.0",
+    "nodemon": "^1.8.1",
     "supertest": "^1.0.1",
     "tape": "^4.0.1"
   }
