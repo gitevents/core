@@ -111,24 +111,11 @@ It uses gitevents web-hooks to talk to a node.js service which listens to your G
 1. Click `Create`
 
 
-1. For meetup, create `common/meetup.credentials.js` with the contents:
-```
-module.exports = {
-  token: '[your api token]',
-  group: '[your group]',
-  group_id: [your group id],
-  duration: 7200000, // default duration: 2h
-  default_venue: 12260922 // default venue: Mobile World Centre, Barcelona
-};
-```
-1. Run the service on your trusted node.js platform
-
-
 ### How to run gitevents locally / as a developer
 
 1. Start the development server: `npm run dev`
 2. Start localtunnel (`npm i -g localtunnel`): `lt -p 3000`
-3. Go to your test-repo webhook settings: `https://github.com/<you>/<repo>/settings/hooks`
+3. Go to your test-repo webhook settings: `https://github.com/gitevents/playground/settings/hooks`
 4. Add or modify the webhook with the localtunnel url
 5. Create, label, and play with issues and milestones
 
