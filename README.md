@@ -29,8 +29,7 @@ It uses gitevents web-hooks to talk to a node.js service which listens to your G
   module.exports = {
     debug: false,
     about: 'A line that is copied into every event.md file as content.',
-    rollbar: '<if you have a rollbar account>',
-
+    rollbar: '<if you have a rollbar account, otherwise remove>',
     date_format: 'DD.MM.YYYY',
     mail: {},
     paths: {
