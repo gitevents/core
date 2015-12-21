@@ -3,7 +3,6 @@ var fs = require('fs');
 var path = require('path');
 
 var meetup = {};
-var auth = {};
 var github = require('./github.credentials');
 
 try {
@@ -16,6 +15,8 @@ try {
 module.exports = {
   debug: true,
   about: 'Barcelona.JS is a usergroup focused on JavaScript and related topics.',
+  rollbar: '42a385da90554f4c9005121b8c1c5bac',
+  date_format: 'DD.MM.YYYY',
   mail: {},
   paths: {
     talks: 'src/talks/',
@@ -23,12 +24,12 @@ module.exports = {
   },
   url: 'http://barcelonajs.org',
   github: github,
-  auth: auth,
   meetup: meetup,
   labels: {
     job: 'jobs',
     talk: 'talk',
-    proposal: 'proposal'
+    proposal: 'proposal',
+    event: 'event'
   },
   ticketing: {
     provider: 'ti.to',
@@ -36,7 +37,6 @@ module.exports = {
   },
   schema: {
     default_organizer: {
-      'context': 'http://schema.org',
       'type': 'Organization',
       'address': {
         'type': 'PostalAddress',
@@ -71,18 +71,18 @@ module.exports = {
         'url': 'http://barcelonajs.org',
         'duration': 'P2H'
       },
-      'offers': {
-        'type': 'Offer',
-        'url': 'https://ti.to/barcelonajs',
-        'price': '0',
-        'priceCurrency': 'EUR',
-        'availability': 'http://schema.org/InStock'
-      },
       doorTime: '18:45',
       inLanguage: {
         'type': 'Language',
         'name': 'English'
       }
+    },
+    default_offers: {
+      'type': 'Offer',
+      'url': 'https://ti.to/barcelonajs',
+      'price': '0',
+      'priceCurrency': 'EUR',
+      'availability': 'http://schema.org/InStock'
     }
   }
 };

@@ -5,6 +5,9 @@ var events = require('./lib/events');
 var gitWebhook = require('github-webhook-handler');
 var express = require('express');
 var cors = require('cors');
+var rollbar = require('rollbar');
+rollbar.init(config.rollbar);
+
 // var jwt = require('express-jwt');
 
 // var authenticate = jwt({
@@ -53,33 +56,39 @@ hookHandler.on('issues', function(event) {
       } else {
         labels = payload.label.name;
       }
+      payload.labelMap = labels;
 
       if (labels.indexOf(config.labels.proposal) > -1) {
         debug('New talk proposal. Nothing to do yet');
       }
 
+      // Chain for planning events
       if (labels.indexOf(config.labels.event) > -1) {
         debug('New event planning.');
 
         events(payload).then(function(event) {
-
+          // !! add event-related plugins here, for example tito !!
+        }).catch(function(error) {
+          console.log('error');
+          console.log(error);
+          rollbar.handleError(error);
         });
       }
 
-      //TODO: "talk proposal" contains "talk", so this should be refactored. Going with "proposal" for now.
+      // Chain for talks
+      //TODO: 'talk proposal' contains 'talk', so this should be refactored. Going with 'proposal' for now.
       if (labels.indexOf(config.labels.talk) > -1) {
         debug('New talk: ' + payload.issue.title);
 
         events(payload).then(function(event) {
-          talks(payload.issue, event).then(function(talk) {
+          talks(payload, event).then(function(talk) {
             console.log(talk);
             console.log('talk processed.');
-          }).catch(function(error) {
-            console.log(error);
           });
         }).catch(function(error) {
           console.log('error');
           console.log(error);
+          rollbar.handleError(error);
         });
       }
     }
