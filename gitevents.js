@@ -1,14 +1,14 @@
-var http = require('http');
 var config = require('./common/config');
 var debug = require('debug')('gitevents');
 var talks = require('./lib/talks');
 var events = require('./lib/events');
 var gitWebhook = require('github-webhook-handler');
-var GitHubApi = require('github');
 var express = require('express');
-var bodyParser = require('body-parser');
 var cors = require('cors');
-var jwt = require('express-jwt');
+var rollbar = require('rollbar');
+rollbar.init(config.rollbar);
+
+// var jwt = require('express-jwt');
 
 // var authenticate = jwt({
 //   secret: config.auth.secret,
@@ -47,6 +47,8 @@ hookHandler.on('issues', function(event) {
     if (payload.action === 'labeled') {
       debug('label: ' + payload.label.name);
 
+      var labels = [];
+
       if (payload.labels) {
         labels = payload.labels.map(function(label) {
           return label.name;
@@ -54,25 +56,39 @@ hookHandler.on('issues', function(event) {
       } else {
         labels = payload.label.name;
       }
+      payload.labelMap = labels;
 
       if (labels.indexOf(config.labels.proposal) > -1) {
         debug('New talk proposal. Nothing to do yet');
       }
 
-      //TODO: "talk proposal" contains "talk", so this should be refactored. Going with "proposal" for now.
+      // Chain for planning events
+      if (labels.indexOf(config.labels.event) > -1) {
+        debug('New event planning.');
+
+        events(payload).then(function(event) {
+          // !! add event-related plugins here, for example tito !!
+        }).catch(function(error) {
+          console.log('error');
+          console.log(error);
+          rollbar.handleError(error);
+        });
+      }
+
+      // Chain for talks
+      //TODO: 'talk proposal' contains 'talk', so this should be refactored. Going with 'proposal' for now.
       if (labels.indexOf(config.labels.talk) > -1) {
         debug('New talk: ' + payload.issue.title);
 
         events(payload).then(function(event) {
-          talks(payload.issue, event).then(function(talk) {
+          talks(payload, event).then(function(talk) {
             console.log(talk);
             console.log('talk processed.');
-          }).catch(function(error) {
-            console.log(error);
           });
         }).catch(function(error) {
           console.log('error');
           console.log(error);
+          rollbar.handleError(error);
         });
       }
     }
@@ -82,7 +98,7 @@ hookHandler.on('issues', function(event) {
 });
 
 app.post('/github/delivery', function(req, res) {
-  hookHandler(req, res, function(err) {
+  hookHandler(req, res, function() {
     res.status(404).send();
   });
 });
