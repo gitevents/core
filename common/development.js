@@ -13,9 +13,9 @@ try {
 }
 
 module.exports = {
-  debug: true,
+  debug: false,
   about: 'Barcelona.JS is a usergroup focused on JavaScript and related topics.',
-  rollbar: '42a385da90554f4c9005121b8c1c5bac',
+  rollbar: '',
   date_format: 'DD.MM.YYYY',
   mail: {},
   paths: {

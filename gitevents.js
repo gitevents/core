@@ -40,10 +40,6 @@ hookHandler.on('issues', function(event) {
   if (event.payload) {
     var payload = event.payload;
 
-    if (payload.action === 'opened') {
-      // nothing to do yet
-    }
-
     if (payload.action === 'labeled') {
       debug('label: ' + payload.label.name);
 
