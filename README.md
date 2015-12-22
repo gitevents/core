@@ -24,36 +24,81 @@ It uses gitevents web-hooks to talk to a node.js service which listens to your G
 
 1. Create a secret [gist](https://gist.github.com) with your production config. Name it `gitevents.js` (needs to contain at least github api token and repository info)
   1. Go to https://github.com/settings/tokens and create a token for your gitevents application
-  1. Create the gist with the contents:
+  1. Copy `common/yourevent.js` and adjust the values
   ```
-    'use strict';
-
-    module.exports = {
-      debug: true,
-      mail: {},
-      url: '<your usergrup website url',
-      github: {
-        user: 'organisation_github_user',
-        repo: 'github_repo_name',
-        token: 'access_token'
+  module.exports = {
+    debug: false,
+    about: 'A line that is copied into every event.md file as content.',
+    rollbar: '<if you have a rollbar account, otherwise remove>',
+    date_format: 'DD.MM.YYYY',
+    mail: {},
+    paths: {
+      talks: 'src/talks/',
+      events: 'src/events/'
+    },
+    url: 'http://barcelonajs.org',
+    github: {
+      user: '<the acting github username>',
+      repos: {
+        planning: '<target user>/<target planning repo>',
+        speakers: '<target user>/<target speakers repo>',
+        gitevent: '<target user>/<target gitevent repo>'
       },
-      labels: {
-        job: 'jobs',
-        talk: 'talk',
-        proposal: 'proposal'
+      secret: '<a random secret that you copy into all webhook settings as secret>',
+      token: '<personal access token from https://github.com/settings/tokens>'
+    },
+    labels: {
+      job: 'job',
+      talk: 'talk',
+      proposal: 'proposal',
+      event: 'event'
+    },
+    schema: {
+      default_organizer: {
+        'type': 'Organization',
+        'address': {
+          'type': 'PostalAddress',
+          'addressLocality': '<city, country>',
+          'postalCode': '<postcode>',
+          'streetAddress': '<address>'
+        },
+        'email': '<organisation email>',
+        'name': '<organisation  name>',
+        'url': '<organisation url>'
+      },
+      default_talk_url: '/talk/',
+      default_event_url: '/event/',
+      default_start_time: '19:00',
+      default_talk: {
+        'context': 'http://schema.org',
+        'type': 'Educational event',
+        'duration': 'P30M'
+      },
+      default_event: {
+        'context': 'http://schema.org',
+        'type': 'Social event',
+        'location': {
+          'type': 'Place',
+          'address': {
+            'type': 'PostalAddress',
+            'addressLocality': '<city, country>',
+            'postalCode': '<postcode>',
+            'streetAddress': '<address>'
+            'name': '<venue name>'
+          },
+          'url': 'http://barcelonajs.org',
+          'duration': 'P2H'
+        },
+        doorTime: '18:45',
+        inLanguage: {
+          'type': 'Language',
+          'name': 'English'
+        }
       }
-    };
+    }
+  };
   ```
-  1. If you want meetup.com support, add this under `github`:
-  ```
-  meetup: {
-    token: 'access_token',
-    group: 'group name',
-    group_id: group id,
-    duration: 7200000,
-    default_venue: default_venue_id
-  }
-  ```
+  
 1. Log in to [Digital Ocean](https://www.digitalocean.com) and [create a Droplet](https://cloud.digitalocean.com/droplets/new)
 1. Name your droplet `gitevents`
 1. Choose $5/month size
@@ -66,24 +111,11 @@ It uses gitevents web-hooks to talk to a node.js service which listens to your G
 1. Click `Create`
 
 
-1. For meetup, create `common/meetup.credentials.js` with the contents:
-```
-module.exports = {
-  token: '[your api token]',
-  group: '[your group]',
-  group_id: [your group id],
-  duration: 7200000, // default duration: 2h
-  default_venue: 12260922 // default venue: Mobile World Centre, Barcelona
-};
-```
-1. Run the service on your trusted node.js platform
-
-
 ### How to run gitevents locally / as a developer
 
 1. Start the development server: `npm run dev`
 2. Start localtunnel (`npm i -g localtunnel`): `lt -p 3000`
-3. Go to your test-repo webhook settings: `https://github.com/<you>/<repo>/settings/hooks`
+3. Go to your test-repo webhook settings: `https://github.com/gitevents/playground/settings/hooks`
 4. Add or modify the webhook with the localtunnel url
 5. Create, label, and play with issues and milestones
 
