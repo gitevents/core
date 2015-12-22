@@ -1,5 +1,9 @@
 # gitevents
 
+## 0.3.1 - 21.12.2015
+- Added example config <example.js>
+- Fixed promise confusion
+
 ## 0.3.0 - 21.12.2015
 - Moved to a new information flow and introduced 'event'-label to create events [@PatrickHeneise]
 - Automatically create milestones [@PatrickHeneise]
