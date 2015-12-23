@@ -3,10 +3,14 @@ var debug = require('debug')('gitevents');
 var talks = require('./lib/talks');
 var events = require('./lib/events');
 var gitWebhook = require('github-webhook-handler');
+var bodyParser = require('body-parser');
 var express = require('express');
 var cors = require('cors');
 var rollbar = require('rollbar');
+var jobs = require('/Users/patrick/Sites/gitevents-jobs/node_modules/gitevents-jobs');
+
 rollbar.init(config.rollbar);
+jobs.init(config);
 
 // var jwt = require('express-jwt');
 
@@ -17,9 +21,10 @@ rollbar.init(config.rollbar);
 
 var app = express();
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 5133);
 
 app.use(cors());
+app.use(bodyParser());
 
 if (!config || !config.github) {
   process.exit(-1);
@@ -98,6 +103,8 @@ app.post('/github/delivery', function(req, res) {
     res.status(404).send();
   });
 });
+
+app.use(jobs);
 
 var server = app.listen(app.get('port'), function() {
   debug('gitevents server listening on port ' + server.address().port);

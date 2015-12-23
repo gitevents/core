@@ -4,27 +4,28 @@ var path = require('path');
 
 var meetup = {};
 var github = require('./github.credentials');
-
-try {
-  fs.accessSync(__dirname + '/meetup.credentials.js');
-  meetup = require('./meetup.credentials');
-} catch (e) {
-  console.log('Missing meetup credentials, running without');
-}
+var auth = require('./auth.credentials');
+var stripe = require('./stripe.credentials');
 
 module.exports = {
   debug: false,
+  github: github,
+  plugins: {
+    jobs: {
+      enabled: true
+    },
+    auth: auth,
+    stripe: stripe
+  },
   about: 'Barcelona.JS is a usergroup focused on JavaScript and related topics.',
   rollbar: '',
   date_format: 'DD.MM.YYYY',
-  mail: {},
   paths: {
     talks: 'src/talks/',
-    events: 'src/events/'
+    events: 'src/events/',
+    jobs: 'jobs/'
   },
   url: 'http://barcelonajs.org',
-  github: github,
-  meetup: meetup,
   labels: {
     job: 'jobs',
     talk: 'talk',
