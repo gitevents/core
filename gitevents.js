@@ -24,7 +24,10 @@ var app = express();
 app.set('port', process.env.PORT || 5133);
 
 app.use(cors());
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+app.use(bodyParser.json());
 
 if (!config || !config.github) {
   process.exit(-1);
