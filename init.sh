@@ -2,7 +2,7 @@
 
 cd /src/common
 
-curl -o production.js $CONFIG_URL
+curl -o production.json $CONFIG_URL
 
 cd /src
 
