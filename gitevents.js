@@ -15,7 +15,6 @@ jobs.init(config);
 var app = express();
 
 app.set('port', process.env.PORT || 5133);
-
 app.use(cors());
 app.use(bodyParser.urlencoded({
   extended: false
@@ -79,7 +78,6 @@ hookHandler.on('issues', function(event) {
 
         events(payload).then(function(event) {
           talks(payload, event).then(function(talk) {
-            console.log(talk);
             console.log('talk processed.');
           });
         }).catch(function(error) {
