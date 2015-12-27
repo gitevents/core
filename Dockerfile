@@ -10,3 +10,4 @@ RUN         cd /src; npm install; npm update
 
 ENV         NODE_ENV production
 CMD         ["/bin/sh", "/src/init.sh"]
+EXPOSE      3000

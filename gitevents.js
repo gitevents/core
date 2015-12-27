@@ -14,7 +14,7 @@ jobs.init(config);
 
 var app = express();
 
-app.set('port', process.env.PORT || 5133);
+app.set('port', process.env.PORT || 3000);
 app.use(cors());
 app.use(bodyParser.urlencoded({
   extended: false
@@ -101,5 +101,6 @@ app.post('/github/delivery', function(req, res) {
 app.use(jobs);
 
 var server = app.listen(app.get('port'), function() {
-  debug('gitevents server listening on port ' + server.address().port);
+  console.log('gitevents server listening on port ' + server.address().port);
+  // debug('gitevents server listening on port ' + server.address().port);
 });
