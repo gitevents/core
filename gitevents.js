@@ -12,13 +12,6 @@ var jobs = require('/Users/patrick/Sites/gitevents-jobs/node_modules/gitevents-j
 rollbar.init(config.rollbar);
 jobs.init(config);
 
-// var jwt = require('express-jwt');
-
-// var authenticate = jwt({
-//   secret: config.auth.secret,
-//   audience: config.auth.audience
-// });
-
 var app = express();
 
 app.set('port', process.env.PORT || 5133);
