@@ -21,6 +21,7 @@
     "express-jwt": "^3.3.0",
     "gitevents-jobs": "0.0.1",
     "github": "^0.2.4",
+    "github-webhook-handler": "0.5.0",
     "json2yaml": "^1.0.3",
     "markdown-parse": "^0.2.1",
     "moment": "^2.10.6",
