@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var cors = require('cors');
 var rollbar = require('rollbar');
-var jobs = require('/Users/patrick/Sites/gitevents-jobs/node_modules/gitevents-jobs');
+var jobs = require('gitevents-jobs');
 
 rollbar.init(config.rollbar);
 jobs.init(config);
