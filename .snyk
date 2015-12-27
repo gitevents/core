@@ -1,0 +1,7 @@
+ignore:
+  'npm:js-yaml:20130623':
+    - 'markdown-to-json > yaml-front-matter > js-yaml':
+        reason: None given
+        expires: '2016-01-26T09:32:39.920Z'
+patch: {}
+version: v1
