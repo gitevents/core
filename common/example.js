@@ -2,7 +2,6 @@ module.exports = {
   debug: false,
   about: 'A line that is copied into every event.md file as content.',
   rollbar: '<if you have a rollbar account>',
-
   date_format: 'DD.MM.YYYY',
   mail: {},
   paths: {

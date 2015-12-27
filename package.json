@@ -5,18 +5,21 @@
   "repository": "https://github.com/gitevents/core.git",
   "scripts": {
     "e2e": "NODE_ENV=development tape tests/*.js",
-    "test": "NODE_ENV=test tape tests/*.js",
+    "test": "snyk test && NODE_ENV=test tape tests/*.js",
     "cover": "istanbul cover tests/*.js",
     "start": "node gitevents.js",
-    "dev": "DEBUG=* nodemon gitevents.js"
+    "dev": "DEBUG=* nodemon gitevents.js",
+    "snyk-protect": "snyk protect",
+    "postinstall": "npm run snyk-protect"
   },
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.14.1",
     "cors": "^2.7.1",
-    "debug": "~2.0.0",
+    "debug": "^2.2.0",
     "express": "^4.13.3",
     "express-jwt": "^3.3.0",
+    "gitevents-jobs": "0.0.1",
     "gitevents-meetup": "git://github.com/gitevents/gitevents-meetup.git",
     "github": "^0.2.4",
     "github-webhook-handler": "0.5.0",
@@ -24,6 +27,7 @@
     "markdown-parse": "^0.2.1",
     "moment": "^2.10.6",
     "rollbar": "^0.5.10",
+    "snyk": "^1.8.3",
     "string": "^3.3.1",
     "yaml-front-matter": "^3.2.3"
   },
@@ -31,7 +35,9 @@
     "istanbul": "^0.4.1",
     "nock": "^3.4.0",
     "nodemon": "^1.8.1",
+    "snyk": "^1.8.3",
     "supertest": "^1.0.1",
     "tape": "^4.0.1"
-  }
+  },
+  "snyk": true
 }
