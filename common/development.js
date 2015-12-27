@@ -27,10 +27,11 @@ module.exports = {
   },
   url: 'http://barcelonajs.org',
   labels: {
-    job: 'jobs',
+    job: 'job',
     talk: 'talk',
     proposal: 'proposal',
-    event: 'event'
+    event: 'event',
+    hot: 'hot'
   },
   ticketing: {
     provider: 'ti.to',
