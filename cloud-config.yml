@@ -28,7 +28,7 @@ coreos:
         ExecStartPre=-/usr/bin/docker kill gitevents-proxy
         ExecStartPre=-/usr/bin/docker rm gitevents-proxy
         ExecStartPre=/usr/bin/docker pull quay.io/patrickheneise/lets-nginx-node
-        ExecStart=/usr/bin/docker run --detach --net=host --name gitevents-proxy --env EMAIL=<email> --env DOMAIN=<domain> quay.io/patrickheneise/lets-nginx-node
+        ExecStart=/usr/bin/docker run --net=host --name gitevents-proxy --env EMAIL=<email> --env DOMAIN=<domain> quay.io/patrickheneise/lets-nginx-node
         ExecStop=/usr/bin/docker stop gitevents-proxy
     - name: gitevents.service
       command: start
