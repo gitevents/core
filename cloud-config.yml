@@ -23,11 +23,12 @@ coreos:
 
         [Service]
         User=core
-        TimeoutStartSec=0
+        TimeoutStartSec=500
+        Restart=always
         ExecStartPre=-/usr/bin/docker kill gitevents-proxy
         ExecStartPre=-/usr/bin/docker rm gitevents-proxy
-        ExecStartPre=/usr/bin/docker pull quay.io/patrickheneise/lets-nginx
-        ExecStart=/usr/bin/docker run --detach --net=host --name gitevents-proxy --env EMAIL=you@email.com --env DOMAIN=gitevents.yourdomain.com quay.io/patrickheneise/lets-nginx
+        ExecStartPre=/usr/bin/docker pull quay.io/patrickheneise/lets-nginx-node
+        ExecStart=/usr/bin/docker run --detach --net=host --name gitevents-proxy --env EMAIL=<email> --env DOMAIN=<domain> quay.io/patrickheneise/lets-nginx-node
         ExecStop=/usr/bin/docker stop gitevents-proxy
     - name: gitevents.service
       command: start
@@ -38,11 +39,12 @@ coreos:
 
         [Service]
         User=core
-        TimeoutStartSec=0
+        TimeoutStartSec=60
+        Restart=always
         ExecStartPre=-/usr/bin/docker kill gitevents
         ExecStartPre=-/usr/bin/docker rm gitevents
         ExecStartPre=/usr/bin/docker pull quay.io/gitevents/gitevents
-        ExecStart=/usr/bin/docker run --name=gitevents --net=host -e "CONFIG_URL=<production.json>/gitevents_barcelonajs.json" quay.io/gitevents/gitevents
+        ExecStart=/usr/bin/docker run --name=gitevents --net=host -e "CONFIG_URL=<production.json url>" quay.io/gitevents/gitevents
         ExecStop=/usr/bin/docker stop gitevents
         Restart=on-failure
         RestartSec=5
