@@ -1,30 +1,33 @@
 #cloud-config
 
 coreos:
-  etcd:
+  etcd2:
     discovery: https://discovery.etcd.io/<token>
-    addr: $public_ipv4:4001
-    peer-addr: $private_ipv4:7001
+    advertise-client-urls: http://$private_ipv4:2379,http://$private_ipv4:4001
+    initial-advertise-peer-urls: http://$private_ipv4:2380
+    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
+    listen-peer-urls: http://$private_ipv4:2380
   units:
-    - name: etcd.service
+    - name: etcd2.service
       command: start
     - name: fleet.service
       command: start
     - name: iptables-restore.service
       enable: true
+      command: start
     - name: gitevents-proxy.service
       command: start
       content: |
         [Unit]
-        Description=gitevents Proxy
+        Description=gitevents SSL Proxy
 
         [Service]
         User=core
         TimeoutStartSec=0
         ExecStartPre=-/usr/bin/docker kill gitevents-proxy
         ExecStartPre=-/usr/bin/docker rm gitevents-proxy
-        ExecStartPre=/usr/bin/docker pull quay.io/gitevents/proxy
-        ExecStart=/usr/bin/docker run --net=host --restart=always --name=gitevents-proxy quay.io/gitevents/proxy
+        ExecStartPre=/usr/bin/docker pull quay.io/patrickheneise/lets-nginx
+        ExecStart=/usr/bin/docker run --detach --net=host --name gitevents-proxy --env EMAIL=you@email.com --env DOMAIN=gitevents.yourdomain.com quay.io/patrickheneise/lets-nginx
         ExecStop=/usr/bin/docker stop gitevents-proxy
     - name: gitevents.service
       command: start
@@ -39,7 +42,7 @@ coreos:
         ExecStartPre=-/usr/bin/docker kill gitevents
         ExecStartPre=-/usr/bin/docker rm gitevents
         ExecStartPre=/usr/bin/docker pull quay.io/gitevents/gitevents
-        ExecStart=/usr/bin/docker run --net=host --restart=always --name=gitevents -e "CONFIG_URL=<production.js>" quay.io/gitevents/gitevents
+        ExecStart=/usr/bin/docker run --name=gitevents --net=host -e "CONFIG_URL=<production.json>/gitevents_barcelonajs.json" quay.io/gitevents/gitevents
         ExecStop=/usr/bin/docker stop gitevents
         Restart=on-failure
         RestartSec=5
@@ -48,7 +51,7 @@ coreos:
 write_files:
   - path: /var/lib/iptables/rules-save
     permissions: 0644
-    owner: root:root
+    owner: 'root:root'
     content: |
       *filter
       :INPUT DROP [0:0]
@@ -58,8 +61,11 @@ write_files:
       -A INPUT -i eth1 -j ACCEPT
       -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
       -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+      -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
       -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
       -A INPUT -p icmp -m icmp --icmp-type 0 -j ACCEPT
       -A INPUT -p icmp -m icmp --icmp-type 3 -j ACCEPT
       -A INPUT -p icmp -m icmp --icmp-type 11 -j ACCEPT
+      -N DOCKER
       COMMIT
+      # the last line of the file needs to be a blank line or a comment
