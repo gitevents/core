@@ -1,8 +1,5 @@
 'use strict';
-var fs = require('fs');
-var path = require('path');
 
-var meetup = {};
 var github = require('./github.credentials');
 var auth = require('./auth.credentials');
 var stripe = require('./stripe.credentials');
