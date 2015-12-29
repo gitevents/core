@@ -2,12 +2,12 @@ var config = require('./common/config');
 var debug = require('debug')('gitevents');
 var talks = require('./lib/talks');
 var events = require('./lib/events');
-var gitWebhook = require('github-webhook-handler');
 var bodyParser = require('body-parser');
 var express = require('express');
 var cors = require('cors');
 var rollbar = require('rollbar');
 var jobs = require('gitevents-jobs');
+var crypto = require('crypto');
 
 rollbar.init(config.rollbar);
 jobs.init(config);
@@ -25,16 +25,7 @@ if (!config || !config.github) {
   process.exit(-1);
 }
 
-var hookHandler = gitWebhook({
-  path: '/github/delivery',
-  secret: config.github.secret
-});
-
-hookHandler.on('error', function(err) {
-  console.log(err);
-});
-
-hookHandler.on('issues', function(event) {
+var issueHandler = function issueHandler(event) {
   debug('New event: ' + event.event);
 
   if (event.payload) {
@@ -90,11 +81,50 @@ hookHandler.on('issues', function(event) {
   } else {
     debug('no action recognised.', event);
   }
-});
+};
 
 app.post('/github/delivery', function(req, res) {
-  hookHandler(req, res, function() {
-    res.status(404).send();
+  var signature = req.headers['x-hub-signature'];
+  var event = req.headers['x-github-event'];
+  var id = req.headers['x-github-delivery'];
+
+  if (!signature) {
+    res.status(400).send('No X-Hub-Signature found on request');
+  }
+
+  if (!event) {
+    res.status(400).send('No X-Github-Event found on request');
+  }
+
+  if (!id) {
+    res.status(400).send('No X-Github-Delivery found on request');
+  }
+
+  var payload = '';
+  try {
+    payload = JSON.stringify(req.body);
+  } catch (e) {
+    res.send(500);
+  }
+
+  var hmac = crypto.createHmac('sha1', config.github.secret);
+  hmac.update(payload);
+  var calculatedSignature = 'sha1=' + hmac.digest('hex');
+  if (signature !== calculatedSignature) {
+    res.status(400).send('X-Hub-Signature does not match blob signature');
+  }
+
+  issueHandler({
+    event: event,
+    id: id,
+    payload: payload,
+    protocol: req.protocol,
+    host: req.headers.host,
+    url: req.url
+  });
+
+  res.status(200).send({
+    'ok': true
   });
 });
 
