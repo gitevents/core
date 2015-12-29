@@ -5,7 +5,7 @@ if (process.env.NODE_ENV === 'production') {
 } else if (process.env.NODE_ENV === 'test') {
   config = require('./test');
 } else {
-  config = require('./production');
+  config = require('./development');
 }
 
 module.exports = exports = config;
