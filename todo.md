@@ -1,6 +1,6 @@
 ## To Do
 ### ``gitevents.js``
-(line 66) : 'talk proposal' contains 'talk', so this should be refactored. Going with 'proposal' for now.
+(line 84) : 'talk proposal' contains 'talk', so this should be refactored. Going with 'proposal' for now.
 
 
 ### ``lib/events.js``

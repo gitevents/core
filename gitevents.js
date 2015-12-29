@@ -5,11 +5,22 @@ var events = require('./lib/events');
 var bodyParser = require('body-parser');
 var express = require('express');
 var cors = require('cors');
-var rollbar = require('rollbar');
 var jobs = require('gitevents-jobs');
 var crypto = require('crypto');
 
-rollbar.init(config.rollbar);
+if (config.rollbar) {
+  var rollbar = require('rollbar');
+  rollbar.init(config.rollbar);
+}
+
+if (config.opbeat) {
+  var opbeat = require('opbeat').start({
+    organizationId: config.opbeat.organizationId,
+    appId: config.opbeat.appId,
+    secretToken: config.opbeat.secretToken
+  });
+}
+
 jobs.init(config);
 
 var app = express();
@@ -58,7 +69,14 @@ var issueHandler = function issueHandler(event) {
         }).catch(function(error) {
           console.log('error');
           console.log(error);
-          rollbar.handleError(error);
+
+          if (config.rollbar) {
+            rollbar.handleError(error);
+          }
+          if (config.opbeat) {
+            opbeat.captureError(error);
+          }
+
         });
       }
 
@@ -74,7 +92,12 @@ var issueHandler = function issueHandler(event) {
         }).catch(function(error) {
           console.log('error');
           console.log(error);
-          rollbar.handleError(error);
+          if (config.rollbar) {
+            rollbar.handleError(error);
+          }
+          if (config.opbeat) {
+            opbeat.captureError(error);
+          }
         });
       }
     }
