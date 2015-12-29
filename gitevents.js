@@ -90,44 +90,45 @@ app.post('/github/delivery', function(req, res) {
   var event = req.headers['x-github-event'];
   var id = req.headers['x-github-delivery'];
 
-  if (!signature) {
-    res.status(400).send('No X-Hub-Signature found on request');
-  }
-
-  if (!event) {
-    res.status(400).send('No X-Github-Event found on request');
-  }
-
-  if (!id) {
-    res.status(400).send('No X-Github-Delivery found on request');
-  }
-
   var payload = '';
   try {
     payload = JSON.stringify(req.body);
-  } catch (e) {
-    res.send(500);
+  } catch (error) {
+    rollbar.handleError(error);
   }
 
   var hmac = crypto.createHmac('sha1', config.github.secret);
   hmac.update(payload);
   var calculatedSignature = 'sha1=' + hmac.digest('hex');
-  if (signature !== calculatedSignature) {
+
+  if (!signature) {
+    debug('No X-Hub-Signature found on request');
+    res.status(400).send('No X-Hub-Signature found on request');
+  } else if (!event) {
+    debug('No X-Github-Event found on request');
+    res.status(400).send('No X-Github-Event found on request');
+  } else if (!id) {
+    debug('No X-Github-Delivery found on request');
+    res.status(400).send('No X-Github-Delivery found on request');
+  } else if (signature !== calculatedSignature) {
+    debug('X-Hub-Signature does not match blob signature');
     res.status(400).send('X-Hub-Signature does not match blob signature');
+  } else {
+    debug('processing payload');
+
+    issueHandler({
+      event: event,
+      id: id,
+      payload: req.body,
+      protocol: req.protocol,
+      host: req.headers.host,
+      url: req.url
+    });
+
+    res.send({
+      'ok': true
+    });
   }
-
-  issueHandler({
-    event: event,
-    id: id,
-    payload: req.body,
-    protocol: req.protocol,
-    host: req.headers.host,
-    url: req.url
-  });
-
-  res.status(200).send({
-    'ok': true
-  });
 });
 
 app.use(jobs);

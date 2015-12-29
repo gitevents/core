@@ -3,6 +3,10 @@
 (line 66) : 'talk proposal' contains 'talk', so this should be refactored. Going with 'proposal' for now.
 
 
+### ``lib/events.js``
+(line 53) : what needs updating?
+
+
 ### ``tests/events.js``
 (line 221) : remove talk not implemented yet
 
