@@ -84,6 +84,8 @@ var issueHandler = function issueHandler(event) {
 };
 
 app.post('/github/delivery', function(req, res) {
+  debug('delivery');
+
   var signature = req.headers['x-hub-signature'];
   var event = req.headers['x-github-event'];
   var id = req.headers['x-github-delivery'];
@@ -117,7 +119,7 @@ app.post('/github/delivery', function(req, res) {
   issueHandler({
     event: event,
     id: id,
-    payload: payload,
+    payload: req.body,
     protocol: req.protocol,
     host: req.headers.host,
     url: req.url
