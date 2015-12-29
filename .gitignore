@@ -27,4 +27,5 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
+common/production.json
 common/*.credentials.js
