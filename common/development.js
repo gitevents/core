@@ -14,7 +14,7 @@ module.exports = {
     auth: auth,
     stripe: stripe
   },
-  about: 'Barcelona.JS is a usergroup focused on JavaScript and related topics.',
+  about: 'CoolestJSGroup is a usergroup focused on JavaScript and related topics.',
   date_format: 'DD.MM.YYYY',
   paths: {
     talks: 'src/talks/',
