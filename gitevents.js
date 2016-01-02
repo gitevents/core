@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var cors = require('cors');
 var jobs = require('gitevents-jobs');
+var meetup = require('gitevents-meetup');
 var crypto = require('crypto');
 
 if (config.rollbar) {
@@ -22,6 +23,7 @@ if (config.opbeat) {
 }
 
 jobs.init(config);
+meetup.init(config);
 
 var app = express();
 
@@ -66,6 +68,10 @@ var issueHandler = function issueHandler(event) {
 
         events(payload).then(function(event) {
           // !! add event-related plugins here, for example tito !!
+          console.log(event);
+          meetup.create(event).then(function(meetupId) {
+            console.log(meetupId);
+          });
         }).catch(function(error) {
           console.log('error');
           console.log(error);
