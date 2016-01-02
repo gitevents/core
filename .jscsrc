@@ -1,5 +1,6 @@
 {
   "preset": "google",
+  "esnext": true,
   "fileExtensions": [".js", "jscs"],
 
   "requireParenthesesAroundIIFE": true,
