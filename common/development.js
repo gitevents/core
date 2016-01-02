@@ -3,6 +3,7 @@
 var github = require('./github.credentials');
 var auth = require('./auth.credentials');
 var stripe = require('./stripe.credentials');
+var meetup = require('./meetup.credentials');
 
 module.exports = {
   debug: false,
@@ -11,6 +12,7 @@ module.exports = {
     jobs: {
       enabled: true
     },
+    meetup: meetup,
     auth: auth,
     stripe: stripe
   },
@@ -48,11 +50,10 @@ module.exports = {
     },
     default_talk_url: '/talk/',
     default_event_url: '/event/',
-    default_start_time: '18:45',
+    default_start_time: '19:00',
     default_talk: {
-      'context': 'http://schema.org',
       'type': 'Educational event',
-      'duration': 'P30M'
+      'duration': 'PT30M'
     },
     default_event: {
       'context': 'http://schema.org',
@@ -66,21 +67,22 @@ module.exports = {
           'streetAddress': 'C/ Fontanella 2',
           'name': 'Mobile World Centre'
         },
-        'url': 'http://barcelonajs.org',
-        'duration': 'P2H'
+        'url': 'https://www.mobileworldcentre.com'
       },
-      doorTime: '18:45',
-      inLanguage: {
+      'url': 'http://barcelonajs.org',
+      'duration': 'PT2H',
+      'doorTime': '18:45',
+      'inLanguage': {
         'type': 'Language',
         'name': 'English'
       }
     },
-    default_offers: {
-      'type': 'Offer',
-      'url': 'https://ti.to/barcelonajs',
-      'price': '0',
-      'priceCurrency': 'EUR',
-      'availability': 'http://schema.org/InStock'
-    }
+  },
+  default_offers: {
+    'type': 'Offer',
+    'url': 'https://ti.to/barcelonajs',
+    'price': '0',
+    'priceCurrency': 'EUR',
+    'availability': 'http://schema.org/InStock'
   }
 };
