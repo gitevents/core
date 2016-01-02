@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/gitevents.svg)](https://www.npmjs.com/package/gitevents)[![build status](https://travis-ci.org/gitevents/core.svg)](https://travis-ci.org/gitevents/core)[![docker](https://quay.io/repository/gitevents/gitevents/status "Docker Repository on Quay")](https://quay.io/repository/gitevents/gitevents)[![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gitevents/core)[![code climate](https://codeclimate.com/github/gitevents/core/badges/gpa.svg)](https://codeclimate.com/github/gitevents/core)[![test coverage](https://codeclimate.com/github/gitevents/core/badges/coverage.svg)](https://codeclimate.com/github/gitevents/core/coverage)[![issue count](https://codeclimate.com/github/gitevents/core/badges/issue_count.svg)](https://codeclimate.com/github/gitevents/core)
+[![npm](https://img.shields.io/npm/v/gitevents.svg)](https://www.npmjs.com/package/gitevents)[![build status](https://travis-ci.org/gitevents/core.svg)](https://travis-ci.org/gitevents/core)[![docker](https://quay.io/repository/gitevents/gitevents/status "Docker Repository on Quay")](https://quay.io/repository/gitevents/gitevents)[![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gitevents/core)[![code climate](https://codeclimate.com/github/gitevents/core/badges/gpa.svg)](https://codeclimate.com/github/gitevents/core)[![test coverage](https://codeclimate.com/github/gitevents/core/badges/coverage.svg)](https://codeclimate.com/github/gitevents/core/coverage)[![issue count](https://codeclimate.com/github/gitevents/core/badges/issue_count.svg)](https://codeclimate.com/github/gitevents/core)[![package quality](http://npm.packagequality.com/shield/gitevents.svg)](http://packagequality.com/#?package=gitevents)
 
 # GitHub Issues + Your Event = gitevents
 You're organising a Developer user-group. You use GitHub Issues in your day job to manage your workflow.  You're having trouble managing your event.  Why not solve your problem with the tools you know.  
@@ -99,7 +99,7 @@ It uses gitevents web-hooks to talk to a node.js service which listens to your G
     }
   };
   ```
-  
+
 1. Log in to [Digital Ocean](https://www.digitalocean.com) and [create a Droplet](https://cloud.digitalocean.com/droplets/new)
 1. Name your droplet `gitevents`
 1. Choose $5/month size
