@@ -7,7 +7,7 @@
     "e2e": "NODE_ENV=development tape tests/*.js",
     "test": "snyk test && NODE_ENV=test tape tests/*.js",
     "cover": "istanbul cover tests/*.js",
-    "start": "node gitevents.js",
+    "start": "DEBUG=gitevents* node gitevents.js",
     "dev": "DEBUG=* nodemon gitevents.js",
     "snyk-protect": "snyk protect",
     "postinstall": "npm run snyk-protect"

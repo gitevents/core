@@ -8,4 +8,4 @@ cd /src
 
 echo 'Starting gitevents...'
 
-node gitevents.js
+npm start
