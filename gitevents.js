@@ -1,4 +1,5 @@
 var config = require('./common/config');
+var constructPlugin = require('./lib/constructPlugin');
 var debug = require('debug')('gitevents');
 var talks = require('./lib/talks');
 var events = require('./lib/events');
@@ -8,12 +9,7 @@ var cors = require('cors');
 var rollbar = require('rollbar');
 rollbar.init(config.rollbar);
 
-// var jwt = require('express-jwt');
-
-// var authenticate = jwt({
-//   secret: config.auth.secret,
-//   audience: config.auth.audience
-// });
+var tito = constructPlugin('gitevents-tito');
 
 var app = express();
 
@@ -62,13 +58,16 @@ hookHandler.on('issues', function(event) {
       if (labels.indexOf(config.labels.event) > -1) {
         debug('New event planning.');
 
-        events(payload).then(function(event) {
-          // !! add event-related plugins here, for example tito !!
-        }).catch(function(error) {
-          console.log('error');
-          console.log(error);
-          rollbar.handleError(error);
-        });
+        if (tito) {
+          console.log('tito ahoy');
+          tito(config.plugins[tito], payload);
+        }
+
+        // events(payload).then(function(event) {
+        //   // !! add event-related plugins here, for example tito !!
+        // }).catch(function(error) {
+        //   rollbar.handleError(error);
+        // });
       }
 
       // Chain for talks
