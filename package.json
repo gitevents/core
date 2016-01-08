@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "istanbul": "^0.4.1",
-    "nock": "^4.0.0",
+    "nock": "^5.2.1",
     "nodemon": "^1.8.1",
     "snyk": "^1.8.3",
     "supertest": "^1.0.1",
