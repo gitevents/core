@@ -1,46 +1,36 @@
 'use strict';
+var fs = require('fs');
+var path = require('path');
 
+var meetup = {};
 var github = require('./github.credentials');
-var auth = require('./auth.credentials');
-var stripe = require('./stripe.credentials');
-var meetup = require('./meetup.credentials');
+
+try {
+  fs.accessSync(__dirname + '/meetup.credentials.js');
+  meetup = require('./meetup.credentials');
+} catch (e) {
+  console.log('Missing meetup credentials, running without');
+}
 
 module.exports = {
-  debug: false,
-  github: github,
-  plugins: {
-    jobs: {
-      enabled: true
-    },
-    meetup: meetup,
-    auth: auth,
-    stripe: stripe
-  },
-  about: 'CoolestJSGroup is a usergroup focused on JavaScript and related topics.',
+  about: 'Barcelona.JS is a usergroup focused on JavaScript and related topics.',
   date_format: 'DD.MM.YYYY',
   paths: {
     talks: 'src/talks/',
-    events: 'src/events/',
-    jobs: 'jobs/'
+    events: 'src/events/'
   },
   url: 'http://barcelonajs.org',
+  github: github,
+  meetup: meetup,
   labels: {
-    job: 'job',
+    job: 'jobs',
     talk: 'talk',
     proposal: 'proposal',
-    event: 'event',
-    hot: 'hot'
+    event: 'event'
   },
-  plugins: [{
-    name: 'gitevents-tito',
-    required: true,
-    authToken: 'aNNaTBmpFqMtEA3TVYyy',
-    account: 'nottsjs'
-  }],
-  date_format: 'DDMMYYYY',
-  paths: {
-    talks: 'src/talks/',
-    events: 'src/events/'
+  ticketing: {
+    provider: 'ti.to',
+    url: 'https://ti.to/barcelonajs/'
   },
   schema: {
     default_organizer: {
@@ -57,10 +47,11 @@ module.exports = {
     },
     default_talk_url: '/talk/',
     default_event_url: '/event/',
-    default_start_time: '19:00',
+    default_start_time: '18:45',
     default_talk: {
+      'context': 'http://schema.org',
       'type': 'Educational event',
-      'duration': 'PT30M'
+      'duration': 'P30M'
     },
     default_event: {
       'context': 'http://schema.org',
@@ -74,22 +65,23 @@ module.exports = {
           'streetAddress': 'C/ Fontanella 2',
           'name': 'Mobile World Centre'
         },
-        'url': 'https://www.mobileworldcentre.com'
+        'url': 'http://barcelonajs.org',
+        'duration': 'P2H'
       },
-      'url': 'http://barcelonajs.org',
-      'duration': 'PT2H',
-      'doorTime': '18:45',
-      'inLanguage': {
+      doorTime: '18:45',
+      inLanguage: {
         'type': 'Language',
         'name': 'English'
       }
     },
-  },
-  default_offers: {
-    'type': 'Offer',
-    'url': 'https://ti.to/barcelonajs',
-    'price': '0',
-    'priceCurrency': 'EUR',
-    'availability': 'http://schema.org/InStock'
+    default_offers: {
+      'type': 'Offer',
+      'url': 'https://ti.to/barcelonajs',
+      'price': '0',
+      'priceCurrency': 'EUR',
+      'availability': 'http://schema.org/InStock'
+    }
   }
+  mail: {},
+  rollbar: '',
 };

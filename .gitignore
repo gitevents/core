@@ -27,5 +27,9 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
+.DS_Store
 common/production.json
 common/*.credentials.js
+
+# Contributor - Package Backup (https://www.npmjs.com/package/contributor)
+.package.json
