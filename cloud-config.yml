@@ -1,0 +1,73 @@
+#cloud-config
+
+coreos:
+  etcd2:
+    discovery: https://discovery.etcd.io/<token>
+    advertise-client-urls: http://$private_ipv4:2379,http://$private_ipv4:4001
+    initial-advertise-peer-urls: http://$private_ipv4:2380
+    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
+    listen-peer-urls: http://$private_ipv4:2380
+  units:
+    - name: etcd2.service
+      command: start
+    - name: fleet.service
+      command: start
+    - name: iptables-restore.service
+      enable: true
+      command: start
+    - name: gitevents-proxy.service
+      command: start
+      content: |
+        [Unit]
+        Description=gitevents SSL Proxy
+
+        [Service]
+        User=core
+        TimeoutStartSec=500
+        Restart=always
+        ExecStartPre=-/usr/bin/docker kill gitevents-proxy
+        ExecStartPre=-/usr/bin/docker rm gitevents-proxy
+        ExecStartPre=/usr/bin/docker pull quay.io/patrickheneise/lets-nginx-node
+        ExecStart=/usr/bin/docker run --net=host --name gitevents-proxy --env EMAIL=<email> --env DOMAIN=<domain> quay.io/patrickheneise/lets-nginx-node
+        ExecStop=/usr/bin/docker stop gitevents-proxy
+    - name: gitevents.service
+      command: start
+      content: |
+        [Unit]
+        Description=gitevents Core
+        After=docker.service
+
+        [Service]
+        User=core
+        TimeoutStartSec=60
+        Restart=always
+        ExecStartPre=-/usr/bin/docker kill gitevents
+        ExecStartPre=-/usr/bin/docker rm gitevents
+        ExecStartPre=/usr/bin/docker pull quay.io/gitevents/gitevents
+        ExecStart=/usr/bin/docker run --name=gitevents --net=host -e "CONFIG_URL=<production.json url>" quay.io/gitevents/gitevents
+        ExecStop=/usr/bin/docker stop gitevents
+        Restart=on-failure
+        RestartSec=5
+  fleet:
+    public-ip: $public_ipv4
+write_files:
+  - path: /var/lib/iptables/rules-save
+    permissions: 0644
+    owner: 'root:root'
+    content: |
+      *filter
+      :INPUT DROP [0:0]
+      :FORWARD DROP [0:0]
+      :OUTPUT ACCEPT [0:0]
+      -A INPUT -i lo -j ACCEPT
+      -A INPUT -i eth1 -j ACCEPT
+      -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+      -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+      -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+      -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
+      -A INPUT -p icmp -m icmp --icmp-type 0 -j ACCEPT
+      -A INPUT -p icmp -m icmp --icmp-type 3 -j ACCEPT
+      -A INPUT -p icmp -m icmp --icmp-type 11 -j ACCEPT
+      -N DOCKER
+      COMMIT
+      # the last line of the file needs to be a blank line or a comment

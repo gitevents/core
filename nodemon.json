@@ -1,4 +1,4 @@
 {
   "verbose": true,
-  "ignore": ["tests/**/*", "npm-debug.log"]
+  "watch": ["lib/**/*", "common/**/*", "gitevents.js"]
 }

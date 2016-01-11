@@ -1,9 +1,15 @@
 ## To Do
-### ``lib/handler.js``
-(line 18) : return meetup ID and store in event for further reference
+### ``gitevents.js``
+(line 90) : 'talk proposal' contains 'talk', so this should be refactored. Going with 'proposal' for now.
 
-(line 21) : add Twitter integration
 
-(line 22) : add LanYrd intgegration
+### ``lib/events.js``
+(line 53) : what needs updating?
+
+
+### ``tests/events.js``
+(line 221) : remove talk not implemented yet
+
+(line 226) : archive talk not implemented yet
 
 ######Generated using [todo.md](https://github.com/charlesthomas/todo.md)

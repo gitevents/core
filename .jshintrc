@@ -7,5 +7,6 @@
     "mocha": true,
     "unused": true,
     "indent": 2,
-    "smarttabs": true
+    "smarttabs": true,
+    "esnext": true
 }
