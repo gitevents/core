@@ -1,12 +1,12 @@
 {
-    "node": true,
-    "bitwise": true,
-    "undef": true,
-    "eqeqeq": true,
-    "noarg": true,
-    "mocha": true,
-    "unused": true,
-    "indent": 2,
-    "smarttabs": true,
-    "esnext": true
+  "node": true,
+  "bitwise": true,
+  "strict": true,
+  "curly": true,
+  "undef": true,
+  "eqeqeq": true,
+  "noarg": true,
+  "mocha": true,
+  "unused": true,
+  "esnext": true
 }
