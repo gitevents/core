@@ -17,13 +17,15 @@
   },
   "license": "MIT",
   "dependencies": {
+    "contributor": "^0.1.25",
+    "debug": "^2.2.0",
+    "gitevents-meetup": "^0.1.0",
+    "gitevents-webhook": "git://github.com/GitEvents/gitevents-webhook.git",
     "body-parser": "^1.14.1",
     "cors": "^2.7.1",
-    "debug": "^2.2.0",
     "express": "^4.13.3",
     "express-jwt": "^3.3.0",
     "gitevents-jobs": "0.0.1",
-    "gitevents-meetup": "^0.1.0",
     "gitevents-tito": "git+https://git@github.com/gitevents/gitevents-tito.git",
     "github": "^0.2.4",
     "github-webhook-handler": "0.5.0",
@@ -40,13 +42,10 @@
     "istanbul": "^0.4.1",
     "nock": "^5.2.1",
     "nodemon": "^1.8.1",
-    "snyk": "^1.8.3",
+    "snyk": true,
     "supertest": "^1.0.1",
     "tape": "^4.0.1"
   },
-<<<<<<< HEAD
-  "snyk": true
-=======
   "contributors": [
     {
       "name": "Michael Barrett",
@@ -55,15 +54,6 @@
       "contributions": 1,
       "additions": 1,
       "deletions": 1,
-      "hireable": null
-    },
-    {
-      "name": "Making GitHub Delicious.",
-      "email": "iron@waffle.io",
-      "url": "https://github.com/waffle-iron",
-      "contributions": 1,
-      "additions": 1,
-      "deletions": 0,
       "hireable": null
     },
     {
@@ -76,30 +66,21 @@
       "hireable": true
     },
     {
-      "name": "Chris Kemp",
-      "email": null,
-      "url": "https://github.com/nomad3k",
-      "contributions": 2,
-      "additions": 27,
-      "deletions": 5,
-      "hireable": true
-    },
-    {
-      "name": "Ian Crowther",
-      "email": "ian@nexttick.io",
-      "url": "https://github.com/iancrowther",
-      "contributions": 1,
-      "additions": 5,
-      "deletions": 0,
-      "hireable": true
-    },
-    {
       "name": null,
       "email": "Henry@ticaboo.co.uk",
       "url": "https://github.com/ticaboo",
       "contributions": 1,
       "additions": 3,
       "deletions": 0,
+      "hireable": null
+    },
+    {
+      "name": "Ivan Fraixedes",
+      "email": null,
+      "url": "https://github.com/ifraixedes",
+      "contributions": 1,
+      "additions": 1,
+      "deletions": 1,
       "hireable": null
     },
     {
@@ -112,13 +93,13 @@
       "hireable": true
     },
     {
-      "name": "maxwellito",
-      "email": "@mxwllt",
-      "url": "https://github.com/maxwellito",
+      "name": "Ian Crowther",
+      "email": "ian@nexttick.io",
+      "url": "https://github.com/iancrowther",
       "contributions": 1,
-      "additions": 46,
+      "additions": 5,
       "deletions": 0,
-      "hireable": null
+      "hireable": true
     },
     {
       "name": "Andy Trevorah",
@@ -128,6 +109,24 @@
       "additions": 17,
       "deletions": 2,
       "hireable": null
+    },
+    {
+      "name": "Making GitHub Delicious.",
+      "email": "iron@waffle.io",
+      "url": "https://github.com/waffle-iron",
+      "contributions": 1,
+      "additions": 1,
+      "deletions": 0,
+      "hireable": null
+    },
+    {
+      "name": "Chris Kemp",
+      "email": null,
+      "url": "https://github.com/nomad3k",
+      "contributions": 2,
+      "additions": 27,
+      "deletions": 5,
+      "hireable": true
     },
     {
       "name": "Greenkeeper",
@@ -148,6 +147,15 @@
       "hireable": null
     },
     {
+      "name": "maxwellito",
+      "email": "@mxwllt",
+      "url": "https://github.com/maxwellito",
+      "contributions": 1,
+      "additions": 46,
+      "deletions": 0,
+      "hireable": null
+    },
+    {
       "name": "Josep Boada",
       "email": "boada135@gmail.com",
       "url": "https://github.com/h02e56",
@@ -155,16 +163,6 @@
       "additions": 59,
       "deletions": 108,
       "hireable": null
-    },
-    {
-      "name": "Ivan Fraixedes",
-      "email": null,
-      "url": "https://github.com/ifraixedes",
-      "contributions": 1,
-      "additions": 1,
-      "deletions": 1,
-      "hireable": null
     }
   ]
->>>>>>> formike
 }
