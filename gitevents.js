@@ -67,7 +67,6 @@ var issueHandler = function issueHandler(event) {
       if (labels.indexOf(config.labels.event) > -1) {
         debug('New event planning.');
 
-<<<<<<< HEAD
         events(payload).then(function(event) {
           // !! add event-related plugins here, for example tito !!
           console.log(event);
@@ -86,18 +85,11 @@ var issueHandler = function issueHandler(event) {
           }
 
         });
-=======
         if (tito) {
           console.log('tito ahoy');
           tito(config.plugins[tito], payload);
         }
 
-        // events(payload).then(function(event) {
-        //   // !! add event-related plugins here, for example tito !!
-        // }).catch(function(error) {
-        //   rollbar.handleError(error);
-        // });
->>>>>>> formike
       }
 
       // Chain for talks
