@@ -2,6 +2,10 @@
   "name": "GitEvents",
   "version": "0.0.3",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitevents/core.git"
+  },
   "scripts": {
     "e2e": "DEBUG=* NODE_ENV=development tape tests/e2e-*.js",
     "test": "DEBUG=gitevents* NODE_ENV=test tape tests/test-*.js",
@@ -10,9 +14,10 @@
   },
   "license": "MIT",
   "dependencies": {
+    "contributor": "^0.1.25",
     "debug": "~2.0.0",
-    "gitevents-webhook": "git://github.com/GitEvents/gitevents-webhook.git",
     "gitevents-meetup": "git://github.com/GitEvents/gitevents-meetup.git",
+    "gitevents-webhook": "git://github.com/GitEvents/gitevents-webhook.git",
     "github": "^0.2.4",
     "github-webhook-handler": "0.5.0"
   },
@@ -20,5 +25,124 @@
     "nock": "^2.9.1",
     "supertest": "^1.0.1",
     "tape": "^4.0.1"
-  }
+  },
+  "contributors": [
+    {
+      "name": "Michael Barrett",
+      "email": null,
+      "url": "https://github.com/mike182uk",
+      "contributions": 1,
+      "additions": 1,
+      "deletions": 1,
+      "hireable": null
+    },
+    {
+      "name": null,
+      "email": "Henry@ticaboo.co.uk",
+      "url": "https://github.com/ticaboo",
+      "contributions": 1,
+      "additions": 3,
+      "deletions": 0,
+      "hireable": null
+    },
+    {
+      "name": "Joe McKie",
+      "email": "joe@joemck.ie",
+      "url": "https://github.com/joemckie",
+      "contributions": 1,
+      "additions": 1,
+      "deletions": 1,
+      "hireable": true
+    },
+    {
+      "name": "Patrick Heneise",
+      "email": null,
+      "url": "https://github.com/PatrickHeneise",
+      "contributions": 118,
+      "additions": 9037,
+      "deletions": 5238,
+      "hireable": true
+    },
+    {
+      "name": "Greenkeeper",
+      "email": "support@greenkeeper.io",
+      "url": "https://github.com/greenkeeperio-bot",
+      "contributions": 3,
+      "additions": 3,
+      "deletions": 3,
+      "hireable": true
+    },
+    {
+      "name": "Making GitHub Delicious.",
+      "email": "iron@waffle.io",
+      "url": "https://github.com/waffle-iron",
+      "contributions": 1,
+      "additions": 1,
+      "deletions": 0,
+      "hireable": null
+    },
+    {
+      "name": "maxwellito",
+      "email": "@mxwllt",
+      "url": "https://github.com/maxwellito",
+      "contributions": 1,
+      "additions": 46,
+      "deletions": 0,
+      "hireable": null
+    },
+    {
+      "name": "Ian Crowther",
+      "email": "ian@nexttick.io",
+      "url": "https://github.com/iancrowther",
+      "contributions": 1,
+      "additions": 5,
+      "deletions": 0,
+      "hireable": true
+    },
+    {
+      "name": "Chris Kemp",
+      "email": null,
+      "url": "https://github.com/nomad3k",
+      "contributions": 2,
+      "additions": 27,
+      "deletions": 5,
+      "hireable": true
+    },
+    {
+      "name": "Andy Trevorah",
+      "email": "a.trevorah+github@gmail.com",
+      "url": "https://github.com/trevorah",
+      "contributions": 3,
+      "additions": 17,
+      "deletions": 2,
+      "hireable": null
+    },
+    {
+      "name": "Josep Boada",
+      "email": "boada135@gmail.com",
+      "url": "https://github.com/h02e56",
+      "contributions": 3,
+      "additions": 59,
+      "deletions": 108,
+      "hireable": null
+    },
+    {
+      "name": "Ivan Fraixedes",
+      "email": null,
+      "url": "https://github.com/ifraixedes",
+      "contributions": 1,
+      "additions": 1,
+      "deletions": 1,
+      "hireable": null
+    },
+    {
+      "name": "The Gitter Badger",
+      "email": "badger@gitter.im",
+      "url": "https://github.com/gitter-badger",
+      "contributions": 1,
+      "additions": 2,
+      "deletions": 0,
+      "hireable": null
+    }
+  ]
 }

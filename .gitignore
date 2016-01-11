@@ -28,3 +28,6 @@ node_modules
 .lock-wscript
 
 common/*.credentials.js
+
+# Contributor - Package Backup (https://www.npmjs.com/package/contributor)
+.package.json
