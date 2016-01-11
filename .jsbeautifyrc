@@ -8,5 +8,6 @@
   "max_preserve_newlines": 2,
   "jslint_happy": false,
   "indent_handlebars": true,
-  "js_space_before_conditional": true
+  "js_space_before_conditional": true,
+  "space_after_anon_function": true
 }
