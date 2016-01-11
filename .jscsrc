@@ -4,18 +4,24 @@
   "fileExtensions": [".js", "jscs"],
 
   "requireParenthesesAroundIIFE": true,
-  "maximumLineLength": 120,
   "validateLineBreaks": "LF",
-  "validateIndentation": 2,
   "disallowTrailingComma": true,
   "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
-
+  "disallowSpacesInAnonymousFunctionExpression": null,
+  "requireSpacesInFunctionExpression": {
+    "beforeOpeningRoundBrace": true,
+    "beforeOpeningCurlyBrace": true
+  },
+  "requireSpacesInFunctionDeclaration": {
+    "beforeOpeningCurlyBrace": true
+  },
+  "requireSpacesInAnonymousFunctionExpression": {
+    "beforeOpeningRoundBrace": true,
+    "beforeOpeningCurlyBrace": true
+  },
   "disallowSpacesInsideObjectBrackets": null,
+  "disallowSpacesInFunctionExpression": null,
   "disallowImplicitTypeConversion": ["string"],
 
-  "safeContextKeyword": "_this",
-
-  "excludeFiles": [
-        "tests/data/**"
-    ]
+  "safeContextKeyword": "_this"
 }
