@@ -85,11 +85,6 @@ var issueHandler = function issueHandler(event) {
           }
 
         });
-        if (tito) {
-          console.log('tito ahoy');
-          tito(config.plugins[tito], payload);
-        }
-
       }
 
       // Chain for talks
