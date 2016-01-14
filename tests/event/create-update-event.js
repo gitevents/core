@@ -42,35 +42,37 @@ test('event file is updated if one exists for the event', function (t) {
 
   var githubStub = sinon.stub();
 
-  var getEventFileSpy = sinon.spy(function() {
+  var githubEventFileGetSpy = sinon.spy(function() {
     return new Promise(function(resolve) {
       resolve(existingEventFile);
     });
   });
 
-  var updateEventFileSpy = sinon.spy(function() {
-    return new Promise(function(resolve) {
+  var githubEventFileUpdateSpy = sinon.spy(function() {
+    return new Promise(function (resolve) {
       resolve(newOrExistingEvent);
     });
   });
 
-  createUpdateEvent.__set__('getEventFile', getEventFileSpy);
-  createUpdateEvent.__set__('updateEventFile', updateEventFileSpy);
+  var githubEventFileStub = sinon.stub().returns({
+    get: githubEventFileGetSpy,
+    update: githubEventFileUpdateSpy
+  });
+
+  createUpdateEvent.__set__('githubEventFile', githubEventFileStub);
 
   /**
    * Make assertions
    */
 
   createUpdateEvent(newOrExistingEvent, githubStub).then(function(result) {
-    var spyCall = updateEventFileSpy.getCall(0);
+    var spyCall = githubEventFileUpdateSpy.getCall(0);
 
-    t.equal(updateEventFileSpy.calledOnce, true, 'updateEventFile was called');
-    t.equal(spyCall.args[0], githubStub, 'correct github instance passed as argument to updateEventFile');
-    t.equal(spyCall.args[1], configStub, 'correct config instance passed as argument to updateEventFile');
-    t.equal(spyCall.args[2], 'events/new-or-existing-event-id.json', 'correct filename passed as argument to updateEventFile');
-    t.equal(spyCall.args[3], existingEventFile.sha, 'correct sha passed as argument to updateEventFile');
-    t.equal(spyCall.args[4], 'ewogICJpZCI6ICJuZXctb3ItZXhpc3RpbmctZXZlbnQtaWQiLAogICJuYW1lIjogIm5ldy1vci1leGlzdGluZy1ldmVudC1uYW1lIgp9', 'correct file content passed as argument to updateEventFile');
-    t.equal(spyCall.args[5], 'Updated event existing-event-id', 'correct message passed as argument to updateEventFile');
+    t.equal(githubEventFileStub.alwaysCalledWith(githubStub), true, 'correct github instance used to interact with github');
+    t.equal(spyCall.args[0], 'events/new-or-existing-event-id.json', 'correct filename used to update event file');
+    t.equal(spyCall.args[1], existingEventFile.sha, 'correct sha used to update event file');
+    t.equal(spyCall.args[2], 'ewogICJpZCI6ICJuZXctb3ItZXhpc3RpbmctZXZlbnQtaWQiLAogICJuYW1lIjogIm5ldy1vci1leGlzdGluZy1ldmVudC1uYW1lIgp9', 'correct file content used to update event file');
+    t.equal(spyCall.args[3], 'Updated event existing-event-id', 'correct message used to update event file');
     t.equal(result, newOrExistingEvent, 'event is returned');
 
     t.end();
@@ -109,26 +111,31 @@ test('error is returned if file failed to update event', function (t) {
 
   var githubStub = sinon.stub();
 
-  var getEventFileSpy = sinon.spy(function() {
+  var githubEventFileGetSpy = sinon.spy(function() {
     return new Promise(function(resolve) {
       resolve(existingEventFile);
     });
   });
 
-  var updateEventFileSpy = sinon.spy(function() {
+  var githubEventFileUpdateSpy = sinon.spy(function() {
     return new Promise(function(resolve, reject) {
       reject(updateEventError);
     });
   });
 
-  createUpdateEvent.__set__('getEventFile', getEventFileSpy);
-  createUpdateEvent.__set__('updateEventFile', updateEventFileSpy);
+  var githubEventFileStub = sinon.stub().returns({
+    get: githubEventFileGetSpy,
+    update: githubEventFileUpdateSpy
+  });
+
+  createUpdateEvent.__set__('githubEventFile', githubEventFileStub);
 
   /**
    * Make assertions
    */
 
   createUpdateEvent(newOrExistingEvent, githubStub).catch(function(result) {
+    t.equal(githubEventFileStub.alwaysCalledWith(githubStub), true, 'correct github instance used to interact with github');
     t.equal(result instanceof Error, true, 'error is returned');
     t.equal(result.message, updateEventError, 'error has correct message');
 
@@ -158,34 +165,36 @@ test('event file is created if one does not exist for the event', function (t) {
 
   var githubStub = sinon.stub();
 
-  var getEventFileSpy = sinon.spy(function() {
+  var githubEventFileGetSpy = sinon.spy(function() {
     return new Promise(function(resolve, reject) {
       reject(getEventRrror);
     });
   });
 
-  var createEventFileSpy = sinon.spy(function() {
-    return new Promise(function(resolve) {
+  var githubEventFileCreateSpy = sinon.spy(function() {
+    return new Promise(function (resolve) {
       resolve(newOrExistingEvent);
     });
   });
 
-  createUpdateEvent.__set__('getEventFile', getEventFileSpy);
-  createUpdateEvent.__set__('createEventFile', createEventFileSpy);
+  var githubEventFileStub = sinon.stub().returns({
+    get: githubEventFileGetSpy,
+    create: githubEventFileCreateSpy
+  });
+
+  createUpdateEvent.__set__('githubEventFile', githubEventFileStub);
 
   /**
    * Make assertions
    */
 
   createUpdateEvent(newOrExistingEvent, githubStub).then(function(result) {
-    var spyCall = createEventFileSpy.getCall(0);
+    var spyCall = githubEventFileCreateSpy.getCall(0);
 
-    t.equal(createEventFileSpy.calledOnce, true, 'createEventFile was called');
-    t.equal(spyCall.args[0], githubStub, 'correct github instance passed as argument to createEventFile');
-    t.equal(spyCall.args[1], configStub, 'correct config instance passed as argument to createEventFile');
-    t.equal(spyCall.args[2], 'events/new-or-existing-event-id.json', 'correct filename passed as argument to createEventFile');
-    t.equal(spyCall.args[3], 'ewogICJpZCI6ICJuZXctb3ItZXhpc3RpbmctZXZlbnQtaWQiLAogICJuYW1lIjogIm5ldy1vci1leGlzdGluZy1ldmVudC1uYW1lIiwKICAiYWJvdXQiOiAiYWJvdXQiCn0=', 'correct file content passed as argument to createEventFile');
-    t.equal(spyCall.args[4], 'Created event new-or-existing-event-id', 'correct message passed as argument to createEventFile');
+    t.equal(githubEventFileStub.alwaysCalledWith(githubStub), true, 'correct github instance used to interact with github');
+    t.equal(spyCall.args[0], 'events/new-or-existing-event-id.json', 'correct filename used to create event file');
+    t.equal(spyCall.args[1], 'ewogICJpZCI6ICJuZXctb3ItZXhpc3RpbmctZXZlbnQtaWQiLAogICJuYW1lIjogIm5ldy1vci1leGlzdGluZy1ldmVudC1uYW1lIiwKICAiYWJvdXQiOiAiYWJvdXQiCn0=', 'correct file content used to create event file');
+    t.equal(spyCall.args[2], 'Created event new-or-existing-event-id', 'correct message used to create event file');
     t.equal(result, newOrExistingEvent, 'event is returned');
     t.equal(result.about, 'about', 'event.about is set');
 
@@ -218,26 +227,31 @@ test('error is returned if the file failed was not created', function (t) {
 
   var githubStub = sinon.stub();
 
-  var getEventFileSpy = sinon.spy(function() {
+  var githubEventFileGetSpy = sinon.spy(function() {
     return new Promise(function(resolve, reject) {
       reject(getEventError);
     });
   });
 
-  var createEventFileSpy = sinon.spy(function() {
+  var githubEventFileCreateSpy = sinon.spy(function() {
     return new Promise(function(resolve, reject) {
       reject(createEventError);
     });
   });
 
-  createUpdateEvent.__set__('getEventFile', getEventFileSpy);
-  createUpdateEvent.__set__('createEventFile', createEventFileSpy);
+  var githubEventFileStub = sinon.stub().returns({
+    get: githubEventFileGetSpy,
+    create: githubEventFileCreateSpy
+  });
+
+  createUpdateEvent.__set__('githubEventFile', githubEventFileStub);
 
   /**
    * Make assertions
    */
 
   createUpdateEvent(newOrExistingEvent, githubStub).catch(function(result) {
+    t.equal(githubEventFileStub.alwaysCalledWith(githubStub), true, 'correct github instance used to interact with github');
     t.equal(result instanceof Error, true, 'error is returned');
     t.equal(result.message, createEventError, 'error has correct message');
 

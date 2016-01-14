@@ -2,7 +2,7 @@ var test = require('tape');
 var sinon = require('sinon');
 var rewire = require('rewire');
 
-var githubHelper = rewire('../lib/github-helper');
+var githubEventFile = rewire('../lib/github-event-file');
 
 var configStub = {
   github: {
@@ -13,9 +13,9 @@ var configStub = {
   }
 }
 
-githubHelper.__set__('config', configStub);
+githubEventFile.__set__('config', configStub);
 
-test('getEventFile: correct params are used to get file', function (t) {
+test('get: correct params are used to get file', function (t) {
   t.plan(1);
 
   var filepath = 'foo/bar/baz';
@@ -33,7 +33,7 @@ test('getEventFile: correct params are used to get file', function (t) {
     path: filepath
   };
 
-  githubHelper(githubMock).getEventFile(filepath).then(function() {
+  githubEventFile(githubMock).get(filepath).then(function() {
     t.equal(
       githubMock.repos.getContent.calledWith(query),
       true,
@@ -44,7 +44,7 @@ test('getEventFile: correct params are used to get file', function (t) {
   });
 });
 
-test('getEventFile: promise rejects with error object when file is not found', function (t) {
+test('get: promise rejects with error object when file is not found', function (t) {
   t.plan(1);
 
   var errorObj = { code: 404 };
@@ -57,14 +57,14 @@ test('getEventFile: promise rejects with error object when file is not found', f
     }
   };
 
-  githubHelper(githubMock).getEventFile().catch(function(error) {
+  githubEventFile(githubMock).get().catch(function(error) {
     t.deepEqual(error, errorObj, 'error object is returned');
 
     t.end();
   })
 });
 
-test('getEventFile: promise resolves with file object when file is found', function (t) {
+test('get: promise resolves with file object when file is found', function (t) {
   t.plan(1);
 
   var fileObj = { content: 'quz' };
@@ -77,14 +77,14 @@ test('getEventFile: promise resolves with file object when file is found', funct
     }
   };
 
-  githubHelper(githubMock).getEventFile().then(function(file) {
+  githubEventFile(githubMock).get().then(function(file) {
     t.deepEqual(file, fileObj, 'file object is returned');
 
     t.end();
   })
 });
 
-test('createEventFile: correct params are used to create file', function (t) {
+test('create: correct params are used to create file', function (t) {
   t.plan(1);
 
   var filepath = 'foo/bar/baz';
@@ -107,7 +107,7 @@ test('createEventFile: correct params are used to create file', function (t) {
     message: message
   };
 
-  githubHelper(githubMock).createEventFile(filepath, content, message).then(function() {
+  githubEventFile(githubMock).create(filepath, content, message).then(function() {
     t.equal(
       githubMock.repos.createFile.calledWith(query),
       true,
@@ -118,7 +118,7 @@ test('createEventFile: correct params are used to create file', function (t) {
   });
 });
 
-test('createEventFile: promise rejects with error when file is not created', function (t) {
+test('create: promise rejects with error when file is not created', function (t) {
   t.plan(1);
 
   var createFileError = new Error();
@@ -131,14 +131,14 @@ test('createEventFile: promise rejects with error when file is not created', fun
     }
   };
 
-  githubHelper(githubMock).createEventFile().catch(function(error) {
+  githubEventFile(githubMock).create().catch(function(error) {
     t.equal(error, createFileError, 'error is returned');
 
     t.end();
   })
 });
 
-test('createEventFile: promise resolves with result when file is created', function (t) {
+test('create: promise resolves with result when file is created', function (t) {
   t.plan(1);
 
   var createFileResult = 'foo';
@@ -151,14 +151,14 @@ test('createEventFile: promise resolves with result when file is created', funct
     }
   };
 
-  githubHelper(githubMock).createEventFile().then(function(result) {
+  githubEventFile(githubMock).create().then(function(result) {
     t.equal(result, createFileResult, 'result is returned');
 
     t.end();
   })
 });
 
-test('updateEventFile: correct params are used to update file', function (t) {
+test('update: correct params are used to update file', function (t) {
   t.plan(1);
 
   var filepath = 'foo/bar/baz';
@@ -183,7 +183,7 @@ test('updateEventFile: correct params are used to update file', function (t) {
     message: message
   };
 
-  githubHelper(githubMock).updateEventFile(filepath, sha, content, message).then(function() {
+  githubEventFile(githubMock).update(filepath, sha, content, message).then(function() {
     t.equal(
       githubMock.repos.updateFile.calledWith(query),
       true,
@@ -194,7 +194,7 @@ test('updateEventFile: correct params are used to update file', function (t) {
   });
 });
 
-test('updateEventFile: promise rejects with error when file is not updated', function (t) {
+test('update: promise rejects with error when file is not updated', function (t) {
   t.plan(1);
 
   var updateFileError = new Error();
@@ -207,14 +207,14 @@ test('updateEventFile: promise rejects with error when file is not updated', fun
     }
   };
 
-  githubHelper(githubMock).updateEventFile().catch(function(error) {
+  githubEventFile(githubMock).update().catch(function(error) {
     t.equal(error, updateFileError, 'error is returned');
 
     t.end();
   })
 });
 
-test('updateEventFile: promise resolves with result when file is updated', function (t) {
+test('update: promise resolves with result when file is updated', function (t) {
   t.plan(1);
 
   var updateFileResult = 'foo';
@@ -227,7 +227,7 @@ test('updateEventFile: promise resolves with result when file is updated', funct
     }
   };
 
-  githubHelper(githubMock).updateEventFile().then(function(result) {
+  githubEventFile(githubMock).update().then(function(result) {
     t.equal(result, updateFileResult, 'result is returned');
 
     t.end();
