@@ -55,20 +55,16 @@ test('talk is added to event with performer', function (t) {
 
   var githubStub = sinon.stub();
 
-  var githubEventFileGetSpy = sinon.spy(function() {
-    return new Promise(function(resolve) {
-      resolve(existingEventFile);
-    });
-  });
+  var githubEventFileGetStub = sinon.stub().returns(
+    Promise.resolve(existingEventFile)
+  );
 
   var githubEventFileUpdateSpy = sinon.spy(function() {
-    return new Promise(function (resolve) {
-      resolve();
-    });
+    return Promise.resolve();
   });
 
   var githubEventFileStub = sinon.stub().returns({
-    get: githubEventFileGetSpy,
+    get: githubEventFileGetStub,
     update: githubEventFileUpdateSpy
   });
 
@@ -119,20 +115,16 @@ test('talk is added to event with performer added to existing performers', funct
 
   var githubStub = sinon.stub();
 
-  var githubEventFileGetSpy = sinon.spy(function() {
-    return new Promise(function(resolve) {
-      resolve(existingEventFile);
-    });
-  });
+  var githubEventFileGetStub = sinon.stub().returns(
+    Promise.resolve(existingEventFile)
+  );
 
   var githubEventFileUpdateSpy = sinon.spy(function() {
-    return new Promise(function (resolve) {
-      resolve();
-    });
+    return Promise.resolve();
   });
 
   var githubEventFileStub = sinon.stub().returns({
-    get: githubEventFileGetSpy,
+    get: githubEventFileGetStub,
     update: githubEventFileUpdateSpy
   });
 
@@ -183,20 +175,16 @@ test('talk is not added to event if it already exists', function (t) {
 
   var githubStub = sinon.stub();
 
-  var githubEventFileGetSpy = sinon.spy(function() {
-    return new Promise(function(resolve) {
-      resolve(existingEventFile);
-    });
-  });
+  var githubEventFileGetStub = sinon.stub().returns(
+      Promise.resolve(existingEventFile)
+  );
 
   var githubEventFileUpdateSpy = sinon.spy(function() {
-    return new Promise(function (resolve) {
-      resolve();
-    });
+    return new Promise.resolve();
   });
 
   var githubEventFileStub = sinon.stub().returns({
-    get: githubEventFileGetSpy,
+    get: githubEventFileGetStub,
     update: githubEventFileUpdateSpy
   });
 
@@ -242,20 +230,16 @@ test('error is returned if failed to update event', function (t) {
 
   var githubStub = sinon.stub();
 
-  var githubEventFileGetSpy = sinon.spy(function() {
-    return new Promise(function(resolve) {
-      resolve(existingEventFile);
-    });
-  });
+  var githubEventFileGetStub = sinon.stub().returns(
+    Promise.resolve(existingEventFile)
+  );
 
   var githubEventFileUpdateSpy = sinon.spy(function() {
-    return new Promise(function (resolve, reject) {
-      reject(updateEventError);
-    });
+    return Promise.reject(updateEventError);
   });
 
   var githubEventFileStub = sinon.stub().returns({
-    get: githubEventFileGetSpy,
+    get: githubEventFileGetStub,
     update: githubEventFileUpdateSpy
   });
 
@@ -288,14 +272,12 @@ test('error is returned if event not found', function (t) {
 
   var githubStub = sinon.stub();
 
-  var githubEventFileGetSpy = sinon.spy(function() {
-    return new Promise(function(resolve, reject) {
-      reject(getEventError);
-    });
-  });
+  var githubEventFileGetStub = sinon.stub().returns(
+    Promise.reject(getEventError)
+  );
 
   var githubEventFileStub = sinon.stub().returns({
-    get: githubEventFileGetSpy
+    get: githubEventFileGetStub
   });
 
   addTalkToEventFromPayload.__set__('githubEventFile', githubEventFileStub);

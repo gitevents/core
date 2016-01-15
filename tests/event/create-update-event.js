@@ -42,20 +42,16 @@ test('event file is updated if one exists for the event', function (t) {
 
   var githubStub = sinon.stub();
 
-  var githubEventFileGetSpy = sinon.spy(function() {
-    return new Promise(function(resolve) {
-      resolve(existingEventFile);
-    });
-  });
+  var githubEventFileGetStub = sinon.stub().returns(
+    Promise.resolve(existingEventFile)
+  );
 
   var githubEventFileUpdateSpy = sinon.spy(function() {
-    return new Promise(function (resolve) {
-      resolve(newOrExistingEvent);
-    });
+    return Promise.resolve(newOrExistingEvent);
   });
 
   var githubEventFileStub = sinon.stub().returns({
-    get: githubEventFileGetSpy,
+    get: githubEventFileGetStub,
     update: githubEventFileUpdateSpy
   });
 
@@ -111,20 +107,16 @@ test('error is returned if file failed to update event', function (t) {
 
   var githubStub = sinon.stub();
 
-  var githubEventFileGetSpy = sinon.spy(function() {
-    return new Promise(function(resolve) {
-      resolve(existingEventFile);
-    });
-  });
+  var githubEventFileGetStub = sinon.stub().returns(
+    Promise.resolve(existingEventFile)
+  );
 
   var githubEventFileUpdateSpy = sinon.spy(function() {
-    return new Promise(function(resolve, reject) {
-      reject(updateEventError);
-    });
+    return Promise.reject(updateEventError);
   });
 
   var githubEventFileStub = sinon.stub().returns({
-    get: githubEventFileGetSpy,
+    get: githubEventFileGetStub,
     update: githubEventFileUpdateSpy
   });
 
@@ -165,20 +157,16 @@ test('event file is created if one does not exist for the event', function (t) {
 
   var githubStub = sinon.stub();
 
-  var githubEventFileGetSpy = sinon.spy(function() {
-    return new Promise(function(resolve, reject) {
-      reject(getEventRrror);
-    });
-  });
+  var githubEventFileGetStub = sinon.stub().returns(
+    Promise.reject(getEventRrror)
+  );
 
   var githubEventFileCreateSpy = sinon.spy(function() {
-    return new Promise(function (resolve) {
-      resolve(newOrExistingEvent);
-    });
+    return Promise.resolve(newOrExistingEvent);
   });
 
   var githubEventFileStub = sinon.stub().returns({
-    get: githubEventFileGetSpy,
+    get: githubEventFileGetStub,
     create: githubEventFileCreateSpy
   });
 
@@ -227,20 +215,16 @@ test('error is returned if the file failed was not created', function (t) {
 
   var githubStub = sinon.stub();
 
-  var githubEventFileGetSpy = sinon.spy(function() {
-    return new Promise(function(resolve, reject) {
-      reject(getEventError);
-    });
-  });
+  var githubEventFileGetStub = sinon.stub().returns(
+    Promise.reject(getEventError)
+  );
 
   var githubEventFileCreateSpy = sinon.spy(function() {
-    return new Promise(function(resolve, reject) {
-      reject(createEventError);
-    });
+    return Promise.reject(createEventError);
   });
 
   var githubEventFileStub = sinon.stub().returns({
-    get: githubEventFileGetSpy,
+    get: githubEventFileGetStub,
     create: githubEventFileCreateSpy
   });
 
