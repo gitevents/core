@@ -1,8 +1,7 @@
 var test = require('tape');
 var sinon = require('sinon');
-var rewire = require('rewire');
 
-var githubEventFile = rewire('../lib/github-event-file');
+var githubEventFile = require('../lib/github-event-file');
 
 var configStub = {
   github: {
@@ -12,8 +11,6 @@ var configStub = {
     }
   }
 }
-
-githubEventFile.__set__('config', configStub);
 
 test('get: correct params are used to get file', function (t) {
   t.plan(1);
@@ -33,7 +30,7 @@ test('get: correct params are used to get file', function (t) {
     path: filepath
   };
 
-  githubEventFile(githubStub).get(filepath).then(function() {
+  githubEventFile(githubStub, configStub).get(filepath).then(function() {
     t.equal(
       githubStub.repos.getContent.calledWith(query),
       true,
@@ -57,7 +54,7 @@ test('get: promise rejects with error object when file is not found', function (
     }
   };
 
-  githubEventFile(githubStub).get().catch(function(error) {
+  githubEventFile(githubStub, configStub).get().catch(function(error) {
     t.deepEqual(error, errorObj, 'error object is returned');
 
     t.end();
@@ -77,7 +74,7 @@ test('get: promise resolves with file object when file is found', function (t) {
     }
   };
 
-  githubEventFile(githubStub).get().then(function(file) {
+  githubEventFile(githubStub, configStub).get().then(function(file) {
     t.deepEqual(file, fileObj, 'file object is returned');
 
     t.end();
@@ -107,7 +104,7 @@ test('create: correct params are used to create file', function (t) {
     message: message
   };
 
-  githubEventFile(githubStub).create(filepath, content, message).then(function() {
+  githubEventFile(githubStub, configStub).create(filepath, content, message).then(function() {
     t.equal(
       githubStub.repos.createFile.calledWith(query),
       true,
@@ -131,7 +128,7 @@ test('create: promise rejects with error when file is not created', function (t)
     }
   };
 
-  githubEventFile(githubStub).create().catch(function(error) {
+  githubEventFile(githubStub, configStub).create().catch(function(error) {
     t.equal(error, createFileError, 'error is returned');
 
     t.end();
@@ -151,7 +148,7 @@ test('create: promise resolves with result when file is created', function (t) {
     }
   };
 
-  githubEventFile(githubStub).create().then(function(result) {
+  githubEventFile(githubStub, configStub).create().then(function(result) {
     t.equal(result, createFileResult, 'result is returned');
 
     t.end();
@@ -183,7 +180,7 @@ test('update: correct params are used to update file', function (t) {
     message: message
   };
 
-  githubEventFile(githubStub).update(filepath, sha, content, message).then(function() {
+  githubEventFile(githubStub, configStub).update(filepath, sha, content, message).then(function() {
     t.equal(
       githubStub.repos.updateFile.calledWith(query),
       true,
@@ -207,7 +204,7 @@ test('update: promise rejects with error when file is not updated', function (t)
     }
   };
 
-  githubEventFile(githubStub).update().catch(function(error) {
+  githubEventFile(githubStub, configStub).update().catch(function(error) {
     t.equal(error, updateFileError, 'error is returned');
 
     t.end();
@@ -227,7 +224,7 @@ test('update: promise resolves with result when file is updated', function (t) {
     }
   };
 
-  githubEventFile(githubStub).update().then(function(result) {
+  githubEventFile(githubStub, configStub).update().then(function(result) {
     t.equal(result, updateFileResult, 'result is returned');
 
     t.end();

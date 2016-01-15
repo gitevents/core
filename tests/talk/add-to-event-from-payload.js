@@ -29,8 +29,6 @@ var speaker = {
   url: 'http://www.example.com/speaker/john-doe'
 };
 
-addTalkToEventFromPayload.__set__('config', configStub);
-
 test('talk is added to event with performer', function (t) {
   /**
    * Setup inputs / outputs
@@ -50,7 +48,7 @@ test('talk is added to event with performer', function (t) {
   };
 
   /**
-   * Setup spies
+   * Setup spies & stubs
    */
 
   var githubStub = sinon.stub();
@@ -74,10 +72,9 @@ test('talk is added to event with performer', function (t) {
    * Make assertions
    */
 
-  addTalkToEventFromPayload(payload, speaker, githubStub).then(function(result) {
+  addTalkToEventFromPayload(payload, speaker, githubStub, configStub).then(function(result) {
     var spyCall = githubEventFileUpdateSpy.getCall(0);
-
-    t.equal(githubEventFileStub.alwaysCalledWith(githubStub), true, 'correct github instance used to interact with github');
+    t.equal(githubEventFileStub.alwaysCalledWith(githubStub, configStub), true, 'correct github & config instance used');
     t.equal(spyCall.args[0], 'events/milestone description.json', 'correct filename used to update event file');
     t.equal(spyCall.args[1], existingEventFile.sha, 'correct sha used to update event file');
     t.equal(spyCall.args[2], 'ewogICJpZCI6ICJleGlzdGluZy1ldmVudC1pZCIsCiAgInBlcmZvcm1lciI6IFsKICAgIHsKICAgICAgInR5cGUiOiAiUGVyc29uIiwKICAgICAgImltYWdlIjogImh0dHA6Ly93d3cuZXhhbXBsZS5jb20vc3BlYWtlci1hdmF0YXIvam9obi1kb2UiLAogICAgICAibmFtZSI6ICJqb2huIGRvZSIsCiAgICAgICJpZCI6ICIyMDE2MTIzMC1pc3N1ZS10aXRsZSIsCiAgICAgICJzYW1lQXMiOiAiaHR0cDovL3d3dy5leGFtcGxlLmNvbS9zcGVha2VyL2pvaG4tZG9lIiwKICAgICAgInVybCI6ICJodHRwOi8vd3d3LmV4YW1wbGUuY29tL3RhbGtzLzIwMTYxMjMwLWlzc3VlLXRpdGxlLmh0bWwiCiAgICB9CiAgXQp9', 'correct file content used to update event file');
@@ -110,7 +107,7 @@ test('talk is added to event with performer added to existing performers', funct
   };
 
   /**
-   * Setup spies
+   * Setup spies & stubs
    */
 
   var githubStub = sinon.stub();
@@ -134,10 +131,10 @@ test('talk is added to event with performer added to existing performers', funct
    * Make assertions
    */
 
-  addTalkToEventFromPayload(payload, speaker, githubStub).then(function(result) {
+  addTalkToEventFromPayload(payload, speaker, githubStub, configStub).then(function(result) {
     var spyCall = githubEventFileUpdateSpy.getCall(0);
 
-    t.equal(githubEventFileStub.alwaysCalledWith(githubStub), true, 'correct github instance used to interact with github');
+    t.equal(githubEventFileStub.alwaysCalledWith(githubStub, configStub), true, 'correct github & config instance used');
     t.equal(spyCall.args[0], 'events/milestone description.json', 'correct filename used to update event file');
     t.equal(spyCall.args[1], existingEventFile.sha, 'correct sha used to update event file');
     t.equal(spyCall.args[2], 'ewogICJpZCI6ICJleGlzdGluZy1ldmVudC1pZCIsCiAgInBlcmZvcm1lciI6IFsKICAgIHsKICAgICAgImlkIjogInBlcmZvcm1lci0xIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAiUGVyc29uIiwKICAgICAgImltYWdlIjogImh0dHA6Ly93d3cuZXhhbXBsZS5jb20vc3BlYWtlci1hdmF0YXIvam9obi1kb2UiLAogICAgICAibmFtZSI6ICJqb2huIGRvZSIsCiAgICAgICJpZCI6ICIyMDE2MTIzMC1pc3N1ZS10aXRsZSIsCiAgICAgICJzYW1lQXMiOiAiaHR0cDovL3d3dy5leGFtcGxlLmNvbS9zcGVha2VyL2pvaG4tZG9lIiwKICAgICAgInVybCI6ICJodHRwOi8vd3d3LmV4YW1wbGUuY29tL3RhbGtzLzIwMTYxMjMwLWlzc3VlLXRpdGxlLmh0bWwiCiAgICB9CiAgXQp9', 'correct file content used to update event file');
@@ -170,7 +167,7 @@ test('talk is not added to event if it already exists', function (t) {
   };
 
   /**
-   * Setup spies
+   * Setup spies & stubs
    */
 
   var githubStub = sinon.stub();
@@ -194,8 +191,8 @@ test('talk is not added to event if it already exists', function (t) {
    * Make assertions
    */
 
-  addTalkToEventFromPayload(payload, speaker, githubStub).then(function(result) {
-    t.equal(githubEventFileStub.alwaysCalledWith(githubStub), true, 'correct github instance used to interact with github');
+  addTalkToEventFromPayload(payload, speaker, githubStub, configStub).then(function(result) {
+    t.equal(githubEventFileStub.alwaysCalledWith(githubStub, configStub), true, 'correct github & config instance used');
     t.equal(githubEventFileUpdateSpy.calledOnce, false, 'updateEventFile was not called');
     t.deepEqual(result, existingEvent, 'event is returned');
 
@@ -225,7 +222,7 @@ test('error is returned if failed to update event', function (t) {
   var updateEventError = 'error';
 
   /**
-   * Setup spies
+   * Setup spies & stubs
    */
 
   var githubStub = sinon.stub();
@@ -249,8 +246,8 @@ test('error is returned if failed to update event', function (t) {
    * Make assertions
    */
 
-  addTalkToEventFromPayload(payload, speaker, githubStub).catch(function(error) {
-    t.equal(githubEventFileStub.alwaysCalledWith(githubStub), true, 'correct github instance used to interact with github');
+  addTalkToEventFromPayload(payload, speaker, githubStub, configStub).catch(function(error) {
+    t.equal(githubEventFileStub.alwaysCalledWith(githubStub, configStub), true, 'correct github & config instance used');
     t.equal(error instanceof Error, true, 'error is returned');
     t.equal(error.message, updateEventError, 'error has correct message');
 
@@ -267,7 +264,7 @@ test('error is returned if event not found', function (t) {
   var getEventError = 'event not found.';
 
   /**
-   * Setup spies
+   * Setup spies & stubs
    */
 
   var githubStub = sinon.stub();
@@ -286,8 +283,8 @@ test('error is returned if event not found', function (t) {
    * Make assertions
    */
 
-  addTalkToEventFromPayload(payload, speaker, githubStub).catch(function(error) {
-    t.equal(githubEventFileStub.alwaysCalledWith(githubStub), true, 'correct github instance used to interact with github');
+  addTalkToEventFromPayload(payload, speaker, githubStub, configStub).catch(function(error) {
+    t.equal(githubEventFileStub.alwaysCalledWith(githubStub, configStub), true, 'correct github & config instance used');
     t.equal(error, getEventError, 'error is returned');
 
     t.end();
