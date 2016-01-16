@@ -1,11 +1,14 @@
 [![npm](https://img.shields.io/npm/v/gitevents.svg)](https://www.npmjs.com/package/gitevents)[![build status](https://travis-ci.org/gitevents/core.svg)](https://travis-ci.org/gitevents/core)[![docker](https://quay.io/repository/gitevents/gitevents/status "Docker Repository on Quay")](https://quay.io/repository/gitevents/gitevents)[![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gitevents/core)[![code climate](https://codeclimate.com/github/gitevents/core/badges/gpa.svg)](https://codeclimate.com/github/gitevents/core)[![test coverage](https://codeclimate.com/github/gitevents/core/badges/coverage.svg)](https://codeclimate.com/github/gitevents/core/coverage)[![issue count](https://codeclimate.com/github/gitevents/core/badges/issue_count.svg)](https://codeclimate.com/github/gitevents/core)[![package quality](http://npm.packagequality.com/shield/gitevents.svg)](http://packagequality.com/#?package=gitevents)
 
 # GitHub Issues + Your Event = gitevents
-You're organising a Developer user-group. You use GitHub Issues in your day job to manage your workflow.  You're having trouble managing your event.  Why not solve your problem with the tools you know.  
+`gitevents` is a [Node.js](https://nodejs.org/en/) server application that can be configured to automatically **setup** and **maintain** one or many events on Event-Management websites through Github.
 
-gitevents uses a **GitHub Issues** to create, track and manage your **Events** as _Milestones_ and book **Talks** as _Issues_, which a progressed through a simple **Workflow** as _Labels_.
+Right now `gitevents` has [Tito](https://github.com/gitevents/gitevents-tito) and [Meetup](https://github.com/gitevents/gitevents-meetup) support. 
 
-It uses gitevents web-hooks to talk to a node.js service which listens to your GitHub Issues.  This propogates events out to Social Networks (Facebook, Twitter, Google+) and Event Management sites (Tito, Meetup, Facebook, Google+) and keeps people informed (Tweets, Status Updates, Email).
+`gitevents` uses the webhooks of a **GitHub repository** to manage events. Every _Milestone_ is treated as **Event** and every _Issue_ represents a **Talk**. Additional workflow is managed by convention through _Labels_. It also supports promoption through social channels (such as Email, Facebook, Twitter, Google+).
+
+# Who needs this?
+Developers that are comfortable using Github but have trouble managing an event.
 
 ## How do I use it?
 ### What do I need?
