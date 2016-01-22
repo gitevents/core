@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test-int": "NODE_ENV=test tape tests/integration/*.js | tap-spec",
-    "test": "snyk test && npm run test-int",
+    "test": "npm run test-int",
     "cover": "NODE_ENV=test istanbul cover ./node_modules/.bin/tape -- tests/**/*.js",
     "start": "DEBUG=gitevents* node gitevents.js",
     "dev": "DEBUG=* nodemon gitevents.js",

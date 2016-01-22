@@ -11,3 +11,7 @@ env: DEBUG=gitevents-*
 
 before_install:
   - npm update -g npm
+
+script:
+  - npm test
+  - snyk test
