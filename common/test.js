@@ -1,84 +1,63 @@
 'use strict';
 
 module.exports = {
-  debug: false,
-  mail: {},
-  about: 'Barcelona.JS is a usergroup focused on JavaScript and related topics.',
-  url: 'http://gitevents.org',
-  paths: {
-    talks: 'src/data/talks/',
-    events: 'src/data/events/'
-  },
   github: {
-    user: 'gitevents',
-    repo: 'playground',
-    secret: 'helloworld',
-    token: 'helloworld'
-  },
-  ticketing: {
-    provider: 'ti.to',
-    url: 'https://ti.to/gitevents/'
-  },
-  meetup: {
-    token: 'abc',
-    group: 'Meetup-API-Testing',
-    duration: 7200000,
-    default_venue_id: 12260922,
-    group_id: 1556336
+    org: 'test-org',
+    repos: {
+      gitevent: 'test-gitevent-repo',
+      speakers: 'test-speakers-repo'
+    },
+    token: 'test-token'
   },
   labels: {
-    job: 'jobs',
     talk: 'talk',
-    proposal: 'proposal'
+    event: 'event',
+  },
+  date_format: 'DDMMYYYY',
+  paths: {
+    talks: 'src/talks/',
+    events: 'src/events/'
   },
   schema: {
     default_organizer: {
-      'context': 'http://schema.org',
       'type': 'Organization',
       'address': {
         'type': 'PostalAddress',
-        'addressLocality': 'Barcelona, London',
-        'postalCode': '12345',
-        'streetAddress': 'Git Corp'
+        'addressLocality': 'Organizer City, Organizer Country',
+        'postalCode': 'Organizer Postal Code',
+        'streetAddress': 'Organizer Street Address'
       },
-      'email': 'hola(at)gitevents.org',
-      'name': 'gitevents',
-      'url': 'http://gitevents.org'
+      'email': 'organizer(at)example.com',
+      'name': 'Organizer',
+      'url': 'http://www.example.com/organizer'
     },
     default_talk_url: '/talk/',
     default_event_url: '/event/',
-    default_start_time: '18:45',
+    default_start_time: '19:00',
     default_talk: {
-      'context': 'http://schema.org',
-      'type': 'Educational event',
-      'duration': 'P30M'
+      type: 'Educational event',
+      duration: 'PT30M'
     },
     default_event: {
-      'context': 'http://schema.org',
-      'type': 'Social event',
-      'location': {
-        'type': 'Place',
-        'address': {
-          'type': 'PostalAddress',
-          'addressLocality': 'Barcelona, Spain',
-          'postalCode': '12345',
-          'streetAddress': 'GitStreet',
-          'name': 'Git Event Centre'
+      context: 'http://schema.org',
+      type: 'Social event',
+      location: {
+        type: 'Place',
+        address: {
+          type: 'PostalAddress',
+          addressLocality: 'Location City, Location Country',
+          postalCode: 'Location Postal Code',
+          streetAddress: 'Location Street Address',
+          name: 'Location Name'
         },
-        'url': 'http://gitevents.org',
-        'duration': 'P2H'
+        url: 'http://www.example.com/location'
       },
-      'offers': {
-        'type': 'Offer',
-        'url': 'https://ti.to/gitevents',
-        'price': '0',
-        'priceCurrency': 'EUR',
-        'availability': 'http://schema.org/InStock'
-      },
+      url: 'http://www.example.com/event',
+      duration: 'PT2H',
       doorTime: '18:45',
       inLanguage: {
-        'type': 'Language',
-        'name': 'English'
+        type: 'Language',
+        name: 'English'
       }
     }
   }
