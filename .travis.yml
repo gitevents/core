@@ -7,8 +7,6 @@ node_js:
 
 sudo: false
 
-env: DEBUG=gitevents-*
-
 before_install:
   - npm update -g npm
 
