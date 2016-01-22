@@ -9,7 +9,7 @@
   "scripts": {
     "test-int": "tape tests/integration/*.js | tap-spec",
     "test": "snyk test && npm run test-int",
-    "cover": "istanbul cover tests/**/*.js",
+    "cover": "istanbul cover ./node_modules/.bin/tape -- tests/**/*.js",
     "start": "DEBUG=gitevents* node gitevents.js",
     "dev": "DEBUG=* nodemon gitevents.js",
     "snyk-protect": "snyk protect",
