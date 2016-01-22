@@ -1,13 +1,15 @@
-language: "node_js"
-env: DEBUG=gitevents-*
-sudo: false
-branches:
-  only:
-    - master
+language: node_js
+
 node_js:
-  - "5"
-  - "4"
-os:
-  - linux
+  - stable
+  - v4
+  - v5
+
+sudo: false
+
 before_install:
   - npm update -g npm
+
+script:
+  - npm test
+  - snyk test

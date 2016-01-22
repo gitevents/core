@@ -7,9 +7,9 @@
     "url": "git+https://github.com/gitevents/core.git"
   },
   "scripts": {
-    "e2e": "NODE_ENV=development tape tests/*.js",
-    "test": "snyk test && NODE_ENV=test tape tests/*.js",
-    "cover": "istanbul cover tests/*.js",
+    "test-int": "NODE_ENV=test tape tests/integration/*.js | tap-spec",
+    "test": "npm run test-int",
+    "cover": "NODE_ENV=test istanbul cover ./node_modules/.bin/tape -- tests/**/*.js",
     "start": "DEBUG=gitevents* node gitevents.js",
     "dev": "DEBUG=* nodemon gitevents.js",
     "snyk-protect": "snyk protect",
@@ -44,6 +44,7 @@
     "sinon": "^1.17.2",
     "snyk": "^1.8.4",
     "supertest": "^1.0.1",
+    "tap-spec": "^4.1.1",
     "tape": "^4.0.1"
   },
   "contributors": [
