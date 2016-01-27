@@ -1,4 +1,4 @@
-var config = require('../../common/config');
+var config = require('../../config');
 var nock = require('nock');
 var rewire = require('rewire');
 var sinon = require('sinon');

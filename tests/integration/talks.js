@@ -1,4 +1,4 @@
-var config = require('../../common/config');
+var config = require('../../config');
 var nock = require('nock');
 var sinon = require('sinon');
 var test = require('tape');
