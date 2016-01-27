@@ -1,4 +1,4 @@
-var config = require('./common/config');
+var config = require('./config');
 var constructPlugin = require('./lib/constructPlugin');
 var debug = require('debug')('gitevents');
 var talks = require('./lib/talks');
