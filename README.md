@@ -5,7 +5,7 @@
 
 Right now `gitevents` has [Tito](https://github.com/gitevents/gitevents-tito) and [Meetup](https://github.com/gitevents/gitevents-meetup) support. 
 
-`gitevents` uses the webhooks of a **GitHub repository** to manage events. Every _Milestone_ is treated as **Event** and every _Issue_ represents a **Talk**. Additional workflow is managed by convention through _Labels_. It also supports promoption through social channels (such as Email, Facebook, Twitter, Google+).
+`gitevents` uses the webhooks of a **GitHub repository** to manage events. Every _Milestone_ is treated as **Event** and every _Issue_ represents a **Talk**. Additional workflow is managed by convention through _Labels_. It also supports promotion through social channels (such as Email, Facebook, Twitter, Google+).
 
 # Who needs this?
 Developers that are comfortable using Github but have trouble managing an event.
