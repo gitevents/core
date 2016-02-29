@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /src/common
+cd /src/config
 
 curl -o production.json $CONFIG_URL
 
