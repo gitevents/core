@@ -28,8 +28,8 @@ node_modules
 .lock-wscript
 
 .DS_Store
-common/production.json
-common/*.credentials.js
+config/production.json
+config/*.credentials.js
 
 # Contributor - Package Backup (https://www.npmjs.com/package/contributor)
 .package.json
