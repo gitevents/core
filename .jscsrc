@@ -13,6 +13,7 @@
     "beforeOpeningCurlyBrace": true
   },
   "requireSpacesInFunctionDeclaration": {
+    "beforeOpeningRoundBrace": true,
     "beforeOpeningCurlyBrace": true
   },
   "requireSpacesInAnonymousFunctionExpression": {

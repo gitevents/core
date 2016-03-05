@@ -1,8 +1,6 @@
 language: node_js
 
 node_js:
-  - stable
-  - v4
   - v5
 
 sudo: false

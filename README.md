@@ -3,7 +3,7 @@
 # GitHub Issues + Your Event = gitevents
 `gitevents` is a [Node.js](https://nodejs.org/en/) server application that can be configured to automatically **setup** and **maintain** one or many events on Event-Management websites through Github.
 
-Right now `gitevents` has [Tito](https://github.com/gitevents/gitevents-tito) and [Meetup](https://github.com/gitevents/gitevents-meetup) support. 
+Right now `gitevents` has [Tito](https://github.com/gitevents/gitevents-tito) and [Meetup](https://github.com/gitevents/gitevents-meetup) support.
 
 `gitevents` uses the webhooks of a **GitHub repository** to manage events. Every _Milestone_ is treated as **Event** and every _Issue_ represents a **Talk**. Additional workflow is managed by convention through _Labels_. It also supports promotion through social channels (such as Email, Facebook, Twitter, Google+).
 
@@ -140,6 +140,9 @@ Run the tests:
 
 
 ## Contribute
+
+    https://github.com/blog/1943-how-to-write-the-perfect-pull-request
+
 
     git clone https://github.com/gitevents/core.git
     npm install
