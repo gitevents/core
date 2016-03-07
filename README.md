@@ -11,6 +11,8 @@ Right now `gitevents` has [Tito](https://github.com/gitevents/gitevents-tito) an
 Developers that are comfortable using Github but have trouble managing an event.
 
 ## How do I use it?
+The idea is to create a planning issue with the event information. You can additionally add a checklist, like we have it in our [demo repo](https://github.com/GiteventsPlayground/planning/issues/9). The moment you label the issue `event`, gitevents jumps in and created milestones, meetup.com events, ti.to signup pages etc. for you - all automatic. In a speaker or talks repo, you can let people create issues with talk proposals, we have some examples [here](https://github.com/GiteventsPlayground/speakers/issues). Gitevents sets up milestones and you can assign a milestone to an issue, which marks the event/date the talk will be scheduled. Once you label the event `talk`, gitevents updates meetup.com, ti.to etc. and also creates semantic markdown and json files in the general event repository that you can use together with [metalsmith](http://metalsmith.io) to automatically build a website.
+
 ### What do I need?
 
 1. A [github _Account_](https://github.com/join)
