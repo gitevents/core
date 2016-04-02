@@ -1,0 +1,13 @@
+patch:
+  'npm:ms:20151024':
+    - 'gitevents-jobs > debug > ms':
+        patched: '2016-04-02T16:50:56.841Z'
+  'npm:request:20160119':
+    - 'contributor > request':
+        patched: '2016-04-02T16:50:56.841Z'
+version: v1
+ignore:
+  'npm:hawk:20160119':
+    - 'contributor > request > hawk':
+        reason: "The issue is related with an undirect depency and currently there isn't any update for the direct dependency so we'll wait a few days to check again"
+        expires: '2016-05-02T16:54:06.012Z'
