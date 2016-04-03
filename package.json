@@ -8,12 +8,12 @@
   },
   "scripts": {
     "test-int": "NODE_ENV=test tape tests/integration/*.js | tap-spec",
-    "test": "npm run test-int",
+    "test": "snyk test && npm run test-int",
     "cover": "NODE_ENV=test istanbul cover ./node_modules/.bin/tape -- tests/**/*.js",
     "start": "DEBUG=gitevents* node gitevents.js",
     "dev": "DEBUG=* nodemon gitevents.js",
     "snyk-protect": "snyk protect",
-    "postinstall": "npm run snyk-protect"
+    "prepublish": "npm run snyk-protect"
   },
   "license": "MIT",
   "dependencies": {
@@ -43,7 +43,7 @@
     "nodemon": "^1.8.1",
     "rewire": "^2.5.1",
     "sinon": "^1.17.2",
-    "snyk": "^1.8.4",
+    "snyk": "^1.13.1",
     "supertest": "^1.0.1",
     "tap-spec": "^4.1.1",
     "tape": "^4.0.1"
@@ -166,5 +166,6 @@
       "deletions": 108,
       "hireable": null
     }
-  ]
+  ],
+  "snyk": true
 }

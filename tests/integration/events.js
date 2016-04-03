@@ -6,10 +6,6 @@ var test = require('tape');
 
 var events = rewire('../../lib/events');
 
-// stub out the milestone module, we will have separate integration tests for this module
-var milestoneStub = sinon.stub();
-events.__set__('milestone', milestoneStub);
-
 // do not allow real http requests
 nock.disableNetConnect();
 
