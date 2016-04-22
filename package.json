@@ -28,7 +28,7 @@
     "gitevents-meetup": "^0.1.0",
     "github": "^0.2.4",
     "github-webhook-handler": "0.5.0",
-    "json2yaml": "^1.0.3",
+    "json2yaml": "^1.1.0",
     "markdown-parse": "^0.2.1",
     "moment": "^2.13.0",
     "opbeat": "^3.1.4",
