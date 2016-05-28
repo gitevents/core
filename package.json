@@ -17,7 +17,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.14.1",
+    "body-parser": "^1.15.1",
     "bunyan": "^1.8.1",
     "contributor": "^0.1.25",
     "cors": "^2.7.1",
