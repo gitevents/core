@@ -22,7 +22,7 @@
     "contributor": "^0.1.25",
     "cors": "^2.7.1",
     "debug": "^2.2.0",
-    "express": "^4.13.3",
+    "express": "^4.14.0",
     "express-jwt": "^3.3.0",
     "gitevents-jobs": "0.0.1",
     "gitevents-meetup": "^0.1.0",
