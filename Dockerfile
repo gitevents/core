@@ -1,7 +1,7 @@
 FROM gliderlabs/alpine
 MAINTAINER Patrick Heneise <patrick@blended.io>
 
-RUN         apk add --update make gcc g++ python curl
+RUN         apk add --update make gcc g++ python curl nodejs-npm
 RUN         apk add --no-cache nodejs
 
 # Bundle app source
